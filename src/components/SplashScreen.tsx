@@ -22,15 +22,16 @@ const SplashScreen: React.FC<{ onFinish: () => void }> = ({ onFinish }) => {
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center transition-opacity duration-1000 ${
-        fadeOutAll ? 'opacity-0' : 'opacity-100'
-      }`}
-    >
-      <div className="absolute inset-0 bg-black transition-opacity duration-1000" />
-      <div
-        className={`absolute inset-0 bg-white transition-opacity duration-1000 ${
-          fadeToWhite ? 'opacity-100' : 'opacity-0'
+      className={`fixed inset-0 z-50 flex bg-black items-center justify-center transition-opacity duration-1000 ${fadeOutAll ? 'opacity-0' : 'opacity-100'
         }`}
+    >
+      <div
+        className={`absolute inset-0 bg-black transition-opacity duration-1000 ${fadeIn ? 'opacity-100' : 'opacity-0'
+          }`}
+      />
+      <div
+        className={`absolute inset-0 bg-white transition-opacity duration-1000 ${fadeToWhite ? 'opacity-100' : 'opacity-0'
+          }`}
       />
       <h1 className="z-10 text-4xl font-bold animate-pulse tracking-widest text-white">
         TYCHE
