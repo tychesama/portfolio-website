@@ -1,59 +1,51 @@
 import React from 'react';
+import Profile from './sections/profile/ProfileDefault';
 
 const MainPage: React.FC = () => {
+  const sections = [
+    { id: 'profile', title: 'Profile', content: <Profile />, className: 'col-span-3 row-span-3'},
+    { id: 'visits', title: 'Website Visits', content: '10000', className: 'col-span-1 row-span-1' },
+    { id: 'random', title: 'Random Thing IDK', content: 'Showcase your apps and code here.', className: 'col-span-1 row-span-2' },
+    { id: 'projects', title: 'Projects', content: 'Job roles, companies, and years.', className: 'col-span-4 row-span-3' },
+    { id: 'skills', title: 'Skills', content: 'Languages, tools, and soft skills.', className: 'col-span-2 row-span-3' },
+    { id: 'experience', title: 'Experience', content: 'Recent posts, dev logs, or musings.', className: 'col-span-2 row-span-3' },
+    { id: 'certifications', title: 'Certifications', content: 'Email, socials, or resume download.', className: 'col-span-3 row-span-1'},
+    { id: 'funfacts', title: 'Fun Facts', content: 'Email, socials, or resume download.', className: 'col-span-1 row-span-3' },
+    { id: 'techstack', title: 'Tech Stack', content: 'Email, socials, or resume download.', className: 'col-span-3 row-span-2' },
+    { id: 'education', title: 'Education', content: 'Email, socials, or resume download.', className: 'col-span-4 row-span-2' },
+  ];
+
   return (
-    <div className="bg-gray-100 text-gray-900 min-h-screen">
+    <div className="bg-[var(--color-surface)] text-[var(--color-text-main)] min-h-screen transition-colors">
       {/* Header */}
-      <header className="bg-white shadow sticky top-0 z-30">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <h1 className="text-xl font-bold">Joe M.</h1>
-          <nav className="space-x-6">
-            <a href="#about" className="hover:text-blue-500">About</a>
-            <a href="#projects" className="hover:text-blue-500">Projects</a>
-            <a href="#contact" className="hover:text-blue-500">Contact</a>
+      <header className="bg-[var(--color-card)] shadow sticky top-0 z-30">
+        <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+          <h1 className="text-xl font-bold text-primary">Home</h1>
+          <nav className="space-x-6 text-sm font-medium">
+            <a href="#profile" className="hover:text-primary">Resume</a>
+            <a href="#projects" className="hover:text-primary">Projects</a>
+            <a href="#contact" className="hover:text-primary">Contact</a>
           </nav>
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-500 to-purple-600 text-white py-20 text-center">
-        <h2 className="text-4xl md:text-5xl font-bold mb-4">Hi, I'm Joe</h2>
-        <p className="text-lg md:text-xl">A Frontend Developer passionate about crafting beautiful UIs</p>
-      </section>
-
-      {/* About Section */}
-      <section id="about" className="py-16 container mx-auto px-4">
-        <h3 className="text-2xl font-bold mb-4">About Me</h3>
-        <p className="text-gray-700 leading-relaxed">
-          I'm a developer who loves turning ideas into interactive applications.
-          I specialize in React, TypeScript, and Tailwind CSS.
-        </p>
-      </section>
-
-      {/* Projects Section */}
-      <section id="projects" className="py-16 bg-white container mx-auto px-4">
-        <h3 className="text-2xl font-bold mb-8">Projects</h3>
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {/* Project Card Example */}
-          <div className="bg-gray-100 p-6 rounded-lg shadow hover:shadow-lg transition">
-            <h4 className="text-xl font-semibold mb-2">Portfolio Website</h4>
-            <p className="text-sm text-gray-600 mb-4">A personal site to showcase my work and resume.</p>
-            <a href="#" className="text-blue-500 hover:underline text-sm">View Project →</a>
-          </div>
-          {/* Add more project cards as needed */}
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section id="contact" className="py-16 container mx-auto px-4">
-        <h3 className="text-2xl font-bold mb-4">Contact</h3>
-        <p className="mb-4">Email me at <a href="mailto:you@example.com" className="text-blue-500 hover:underline">you@example.com</a></p>
-        <a href="#" className="inline-block bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600">Download Resume</a>
-      </section>
+      {/* Grid Layout */}
+      <main className="max-w-7xl mx-auto px-4 py-8 grid grid-cols-4 auto-rows-[180px] gap-6">
+        {sections.map(({ id, title, content, className }) => (
+          <section
+            key={id}
+            id={id}
+            className={`bg-[var(--color-card)] rounded shadow p-4 transition transform hover:scale-[1.03] hover:z-10 ${className}`}
+          >
+            <h2 className="text-lg font-bold text-secondary mb-2">{title}</h2>
+            <p className="text-sm text-[var(--color-text-subtle)]">{content}</p>
+          </section>
+        ))}
+      </main>
 
       {/* Footer */}
-      <footer className="bg-white text-center py-4 border-t mt-8">
-        <p className="text-sm text-gray-500">© {new Date().getFullYear()} Joe M. All rights reserved.</p>
+      <footer className="bg-[var(--color-card)] text-center py-4 border-t mt-12 transition-colors">
+        <p className="text-sm text-[var(--color-text-subtle)]">© {new Date().getFullYear()} Joem. All rights reserved.</p>
       </footer>
     </div>
   );

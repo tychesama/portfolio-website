@@ -1,0 +1,21 @@
+:root {
+  --color-surface: #0f172a;
+  --color-card: #1e293b;
+  --color-text-main: #f9fafb;
+  --color-text-subtle: #9ca3af;
+  
+}
+
+[data-theme="light"] {
+  --color-surface: #f1f5f9;
+  --color-card: #ffffff;
+  --color-text-main: #1e293b;
+  --color-text-subtle: #64748b;
+}
+
+[data-theme="alternate"] {
+  --color-surface: #f1f5f9;
+  --color-card: #ffffff;
+  --color-text-main: #1e293b;
+  --color-text-subtle: #64748b;
+}

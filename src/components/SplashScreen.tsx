@@ -10,7 +10,7 @@ const SplashScreen: React.FC<{ onFinish: () => void }> = ({ onFinish }) => {
     const fadeToWhiteTimer = setTimeout(() => setFadeToWhite(true), 2000);
     const fadeOutAllTimer = setTimeout(() => {
       setFadeOutAll(true);
-      setTimeout(onFinish, 1000); // give time for full fade out
+      setTimeout(onFinish, 1000); 
     }, 3000);
 
     return () => {

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import SplashScreen from './components/SplashScreen';
 import MainPage from './pages/MainPage';
+import ThemeSwitcher from './components/ThemeSwitcher';
 
 function App() {
   const [isSplashVisible, setIsSplashVisible] = useState(true);
@@ -12,6 +13,7 @@ function App() {
       {!isSplashVisible && (
         <div></div>
       )}
+      <ThemeSwitcher />
       <MainPage />
     </>
   );
