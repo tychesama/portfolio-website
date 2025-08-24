@@ -1,17 +1,20 @@
 import React from 'react';
-import Profile from './sections/profile/ProfileDefault';
+import Profile from './sections/ProfileSection';
+import Highlight from './sections/HighlightSection';
+import Activity from './sections/ActivitySection';
+import data from '../data.json';
 
 const MainPage: React.FC = () => {
   const sections = [
-    { id: 'profile', title: 'Profile', content: <Profile />, className: 'col-span-3 row-span-3'},
-    { id: 'visits', title: 'Website Visits', content: '10000', className: 'col-span-1 row-span-1' },
-    { id: 'random', title: 'Random Thing IDK', content: 'Showcase your apps and code here.', className: 'col-span-1 row-span-2' },
+    { id: 'profile', title: 'Profile', content: <Profile profile={data.profile} />, className: 'col-span-3 row-span-3'},
+    { id: 'highlight', title: 'Highlight', content: <Highlight highlight={data.highlight} />, className: 'col-span-1 row-span-1' },
+    { id: 'Activity', title: 'Activity', content: <Activity activity={data.activity} />, className: 'col-span-1 row-span-2' },
     { id: 'projects', title: 'Projects', content: 'Job roles, companies, and years.', className: 'col-span-4 row-span-3' },
     { id: 'skills', title: 'Skills', content: 'Languages, tools, and soft skills.', className: 'col-span-2 row-span-3' },
     { id: 'experience', title: 'Experience', content: 'Recent posts, dev logs, or musings.', className: 'col-span-2 row-span-3' },
     { id: 'certifications', title: 'Certifications', content: 'Email, socials, or resume download.', className: 'col-span-3 row-span-1'},
     { id: 'funfacts', title: 'Fun Facts', content: 'Email, socials, or resume download.', className: 'col-span-1 row-span-3' },
-    { id: 'techstack', title: 'Tech Stack', content: 'Email, socials, or resume download.', className: 'col-span-3 row-span-2' },
+    { id: 'techstack', title: 'Extra', content: 'Email, socials, or resume download.', className: 'col-span-3 row-span-2' },
     { id: 'education', title: 'Education', content: 'Email, socials, or resume download.', className: 'col-span-4 row-span-2' },
   ];
 
@@ -35,7 +38,7 @@ const MainPage: React.FC = () => {
           <section
             key={id}
             id={id}
-            className={`bg-[var(--color-card)] rounded shadow p-4 transition transform hover:scale-[1.03] hover:z-10 ${className}`}
+            className={`bg-[var(--color-card)] rounded shadow p-4 transition transform hover:scale-[1.01] hover:z-10 ${className}`}
           >
             <h2 className="text-lg font-bold text-secondary mb-2">{title}</h2>
             <p className="text-sm text-[var(--color-text-subtle)]">{content}</p>

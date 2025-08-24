@@ -1,0 +1,87 @@
+{
+  "profile": { 
+    "name": "Jose Emmanuel Idpan",
+    "title": "Computer Science Undergrad",
+    "nickname": "Joem",
+    "image": "https://picsum.photos/500",
+    "about": "Passionate developer with a focus on full stack web applications."
+  },
+  "highlight": {
+    "messageOfTheDay": "Keep learning, keep building!",
+    "currentPlaylistSong": {
+      "title": "Song Name",
+      "artist": "Artist Name",
+      "link": "https://open.spotify.com/track/example"
+    }
+  },
+  "activity": {
+    "lastUpdatedRepo": {
+      "name": "cool-project",
+      "description": "Latest repo update showcasing my learning.",
+      "link": "https://github.com/johndoe/cool-project",
+      "lastUpdated": "2025-08-20"
+    }
+  },
+  "projects": [
+    {
+      "name": "Portfolio Website",
+      "description": "Personal website to showcase work.",
+      "techstack": ["React", "TailwindCSS"],
+      "link": "https://example.com",
+      "images": ["https://picsum.photos/500"]
+    },
+    {
+      "name": "Task Manager App",
+      "description": "Full-featured to-do application with Firebase backend.",
+      "techstack": ["React", "Firebase", "Node.js"],
+      "link": "https://github.com/johndoe/task-manager",
+      "images": ["https://picsum.photos/500"]
+    }
+  ],
+  "skills": {
+    "technical": ["JavaScript", "Python", "React", "Node.js", "SQL"],
+    "tools": ["Git", "Docker", "VS Code", "Linux"],
+    "softSkills": ["Teamwork", "Problem-Solving", "Communication"]
+  },
+  "experience": [
+    {
+      "company": "Tech Corp",
+      "role": "Software Engineer",
+      "duration": "2023 - Present",
+      "description": "Worked on scalable web applications and APIs."
+    },
+    {
+      "company": "Web Solutions",
+      "role": "Frontend Developer",
+      "duration": "2021 - 2023",
+      "description": "Built and optimized user-facing features."
+    }
+  ],
+  "certifications": [
+    {
+      "name": "CCNA",
+      "issuer": "Cisco",
+      "date": "2024-03-10"
+    },
+    {
+      "name": "AWS Certified Cloud Practitioner",
+      "issuer": "Amazon Web Services",
+      "date": "2023-08-15"
+    }
+  ],
+  "extra": {
+    "notes": "This section can be customized for future ideas."
+  },
+  "funFacts": [
+    "I can solve a Rubik’s cube in under 1 minute.",
+    "Coffee is my coding fuel.",
+    "I once built a drone from scratch."
+  ],
+  "education": [
+    {
+      "institution": "University of Technology",
+      "degree": "B.Sc. in Computer Science",
+      "years": "2018 - 2022"
+    }
+  ]
+}

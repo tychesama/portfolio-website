@@ -8,12 +8,12 @@ function App() {
 
   return (
     <>
-      {isSplashVisible && <SplashScreen onFinish={() => setIsSplashVisible(false)} />}
+      {/* {isSplashVisible && <SplashScreen onFinish={() => setIsSplashVisible(false)} />}
 
       {!isSplashVisible && (
         <div></div>
       )}
-      <ThemeSwitcher />
+      <ThemeSwitcher /> */}
       <MainPage />
     </>
   );
