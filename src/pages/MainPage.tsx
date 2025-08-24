@@ -2,14 +2,15 @@ import React from 'react';
 import Profile from './sections/ProfileSection';
 import Highlight from './sections/HighlightSection';
 import Activity from './sections/ActivitySection';
-import data from '../data.json';
+import Projects from './sections/ProjectSection';
+import data from '../data.json'; 
 
 const MainPage: React.FC = () => {
   const sections = [
     { id: 'profile', title: 'Profile', content: <Profile profile={data.profile} />, className: 'col-span-3 row-span-3'},
     { id: 'highlight', title: 'Highlight', content: <Highlight highlight={data.highlight} />, className: 'col-span-1 row-span-1' },
     { id: 'Activity', title: 'Activity', content: <Activity activity={data.activity} />, className: 'col-span-1 row-span-2' },
-    { id: 'projects', title: 'Projects', content: 'Job roles, companies, and years.', className: 'col-span-4 row-span-3' },
+    { id: 'projects', title: 'Projects', content: <Projects projects={data.projects} />, className: 'col-span-4 row-span-3' },
     { id: 'skills', title: 'Skills', content: 'Languages, tools, and soft skills.', className: 'col-span-2 row-span-3' },
     { id: 'experience', title: 'Experience', content: 'Recent posts, dev logs, or musings.', className: 'col-span-2 row-span-3' },
     { id: 'certifications', title: 'Certifications', content: 'Email, socials, or resume download.', className: 'col-span-3 row-span-1'},
@@ -20,10 +21,9 @@ const MainPage: React.FC = () => {
 
   return (
     <div className="bg-[var(--color-surface)] text-[var(--color-text-main)] min-h-screen transition-colors">
-      {/* Header */}
       <header className="bg-[var(--color-card)] shadow sticky top-0 z-30">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-          <h1 className="text-xl font-bold text-primary">Home</h1>
+          <h1 className="text-xl font-bold text-primary">Tyche01</h1>
           <nav className="space-x-6 text-sm font-medium">
             <a href="#profile" className="hover:text-primary">Resume</a>
             <a href="#projects" className="hover:text-primary">Projects</a>
@@ -32,7 +32,6 @@ const MainPage: React.FC = () => {
         </div>
       </header>
 
-      {/* Grid Layout */}
       <main className="max-w-7xl mx-auto px-4 py-8 grid grid-cols-4 auto-rows-[180px] gap-6">
         {sections.map(({ id, title, content, className }) => (
           <section

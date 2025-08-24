@@ -17,7 +17,7 @@ const HighlightDefault: React.FC<HighlightProps> = ({ highlight }) => {
         <button
           className={`bg-[var(--color-mini-card)] text-sm font-medium rounded-tl-lg transition-transform duration-200
     ${activeTab === "motd"
-              ? "text-[var(--color-primary)] border-t-2 border-[var(--color-primary)] translate-y-0 rounded-tr-lg"
+              ? "text-[var(--color-primary)] border-t-2 border-[var(--color-primary)] translate-y-1 rounded-tr-lg"
               : "text-[var(--color-text-subtle)] translate-y-3 hover:translate-y-0"
             } px-2 py-1`}
           onClick={() => setActiveTab("motd")}
@@ -28,7 +28,7 @@ const HighlightDefault: React.FC<HighlightProps> = ({ highlight }) => {
         <button
           className={`bg-[var(--color-mini-card)] text-sm font-medium transition-transform duration-200
     ${activeTab === "playlist"
-              ? "text-[var(--color-primary)] border-t-2 border-[var(--color-primary)] translate-y-0 rounded-t-lg"
+              ? "text-[var(--color-primary)] border-t-2 border-[var(--color-primary)] translate-y-1 rounded-t-lg"
               : "text-[var(--color-text-subtle)] translate-y-3 hover:translate-y-0"
             } px-2 py-1`}
           onClick={() => setActiveTab("playlist")}
@@ -39,7 +39,7 @@ const HighlightDefault: React.FC<HighlightProps> = ({ highlight }) => {
         <button
           className={`bg-[var(--color-mini-card)] text-sm font-medium rounded-tr-lg transition-transform duration-200
     ${activeTab === "extra"
-              ? "text-[var(--color-primary)] border-t-2 border-[var(--color-primary)] translate-y-0 rounded-tl-lg"
+              ? "text-[var(--color-primary)] border-t-2 border-[var(--color-primary)] translate-y-1 rounded-tl-lg"
               : "text-[var(--color-text-subtle)] translate-y-3 hover:translate-y-0"
             } px-2 py-1`}
           onClick={() => setActiveTab("extra")}

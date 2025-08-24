@@ -1,11 +1,11 @@
 import React, { } from "react";
 
-interface ActivityProps {
-  activity: {
+interface ProjectProps {
+  projects: {
   };
 }
 
-const ActivityDefault: React.FC<ActivityProps> = ({ }) => {
+const ProjectDefault: React.FC<ProjectProps> = ({ }) => {
   return (
     <div className="w-full bg-transparent rounded-lg mt-2 flex flex-col">
       <div className="flex h-[310px]">
@@ -46,4 +46,4 @@ const ActivityDefault: React.FC<ActivityProps> = ({ }) => {
 };
 
 
-export default ActivityDefault;
+export default ProjectDefault;
