@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import motd_image from '../../photos/titlegif.gif'
 
 interface HighlightProps {
   highlight: {
