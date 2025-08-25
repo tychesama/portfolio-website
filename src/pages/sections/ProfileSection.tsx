@@ -1,3 +1,5 @@
+import pfp from "../../photos/pfp.gif";
+
 interface ProfileProps {
   profile: {
     name: string;
@@ -12,7 +14,7 @@ const ProfileDefault: React.FC<ProfileProps> = ({ profile }) => (
   <div className="w-full h-full flex flex-col justify-between items-center text-[var(--color-text-main)]">
     <div className="bg-[var(--color-card)] px-8 py-6 rounded-lg flex items-start gap-6 w-full">
       <img
-        src={profile.image}
+        src={pfp}
         alt="Profile"
         className="w-[250px] h-[250px] rounded-full object-cover"
       />
@@ -28,7 +30,7 @@ const ProfileDefault: React.FC<ProfileProps> = ({ profile }) => (
 
     <div className="w-[90%] bg-[var(--color-mini-card)] p-6 rounded-lg mt-12 flex items-start gap-4 min-h-[125px] shadow-md">
       <img
-        src="https://picsum.photos/500?random=2"
+        src="https://media1.tenor.com/m/5qbofo9sJsgAAAAd/my-mom-is-kinda-homeless-ishowspeed.gif"
         alt="thumb"
         className="w-[75px] h-[75px] rounded-md object-cover"
       />

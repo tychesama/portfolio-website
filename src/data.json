@@ -1,5 +1,5 @@
 {
-  "profile": { 
+  "profile": {
     "name": "Jose Emmanuel Idpan",
     "title": "Computer Science Undergrad",
     "nickname": "Joem",
@@ -26,22 +26,161 @@
     {
       "name": "Portfolio Website",
       "description": "Personal website to showcase work.",
-      "techstack": ["React", "TailwindCSS"],
+      "techstack": [
+        "React",
+        "TailwindCSS"
+      ],
       "link": "https://example.com",
-      "images": ["https://picsum.photos/500"]
+      "images": [
+        "https://picsum.photos/500"
+      ],
+      "color": "#3B82F6"
     },
     {
       "name": "Task Manager App",
       "description": "Full-featured to-do application with Firebase backend.",
-      "techstack": ["React", "Firebase", "Node.js"],
+      "techstack": [
+        "React",
+        "Firebase",
+        "Node.js"
+      ],
       "link": "https://github.com/johndoe/task-manager",
-      "images": ["https://picsum.photos/500"]
+      "images": [
+        "https://picsum.photos/500"
+      ],
+      "color": "#10B981"
+    },
+    {
+      "name": "Weather Dashboard",
+      "description": "Real-time weather updates using OpenWeather API.",
+      "techstack": [
+        "Vue.js",
+        "TailwindCSS",
+        "API Integration"
+      ],
+      "link": "https://github.com/johndoe/weather-dashboard",
+      "images": [
+        "https://picsum.photos/501"
+      ],
+      "color": "#F59E0B"
+    },
+    {
+      "name": "E-Commerce Store",
+      "description": "Mock online shop with cart, payments, and authentication.",
+      "techstack": [
+        "Next.js",
+        "Stripe",
+        "MongoDB"
+      ],
+      "link": "https://github.com/johndoe/ecommerce-store",
+      "images": [
+        "https://picsum.photos/502"
+      ],
+      "color": "#EF4444"
+    },
+    {
+      "name": "Blog CMS",
+      "description": "Custom blogging platform with Markdown support.",
+      "techstack": [
+        "Django",
+        "React",
+        "SQLite"
+      ],
+      "link": "https://github.com/johndoe/blog-cms",
+      "images": [
+        "https://picsum.photos/503"
+      ],
+      "color": "#6366F1"
+    },
+    {
+      "name": "Chat Application",
+      "description": "Realtime chat app with WebSockets.",
+      "techstack": [
+        "Node.js",
+        "Express",
+        "Socket.io"
+      ],
+      "link": "https://github.com/johndoe/chat-app",
+      "images": [
+        "https://picsum.photos/504"
+      ],
+      "color": "#14B8A6"
+    },
+    {
+      "name": "Finance Tracker",
+      "description": "Track expenses and income with visual analytics.",
+      "techstack": [
+        "Flutter",
+        "Firebase"
+      ],
+      "link": "https://github.com/johndoe/finance-tracker",
+      "images": [
+        "https://picsum.photos/505"
+      ],
+      "color": "#8B5CF6"
+    },
+    {
+      "name": "AI Image Classifier",
+      "description": "Deep learning project for image recognition.",
+      "techstack": [
+        "Python",
+        "TensorFlow",
+        "Keras"
+      ],
+      "link": "https://github.com/johndoe/ai-image-classifier",
+      "images": [
+        "https://picsum.photos/506"
+      ],
+      "color": "#DC2626"
+    },
+    {
+      "name": "Music Player",
+      "description": "A lightweight browser-based music player.",
+      "techstack": [
+        "React",
+        "Redux",
+        "HTML5 Audio"
+      ],
+      "link": "https://github.com/johndoe/music-player",
+      "images": [
+        "https://picsum.photos/507"
+      ],
+      "color": "#D97706"
+    },
+    {
+      "name": "Travel Planner",
+      "description": "Plan trips with maps, notes, and itineraries.",
+      "techstack": [
+        "Angular",
+        "Firebase",
+        "Leaflet.js"
+      ],
+      "link": "https://github.com/johndoe/travel-planner",
+      "images": [
+        "https://picsum.photos/508"
+      ],
+      "color": "#0EA5E9"
     }
   ],
   "skills": {
-    "technical": ["JavaScript", "Python", "React", "Node.js", "SQL"],
-    "tools": ["Git", "Docker", "VS Code", "Linux"],
-    "softSkills": ["Teamwork", "Problem-Solving", "Communication"]
+    "technical": [
+      "JavaScript",
+      "Python",
+      "React",
+      "Node.js",
+      "SQL"
+    ],
+    "tools": [
+      "Git",
+      "Docker",
+      "VS Code",
+      "Linux"
+    ],
+    "softSkills": [
+      "Teamwork",
+      "Problem-Solving",
+      "Communication"
+    ]
   },
   "experience": [
     {

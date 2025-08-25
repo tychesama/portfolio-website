@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import motd_image from '../../photos/titlegif.gif'
 
 interface HighlightProps {
   highlight: {
@@ -53,7 +54,7 @@ const HighlightDefault: React.FC<HighlightProps> = ({ highlight }) => {
         {activeTab === "motd" && (
           <>
             <img
-              src="https://picsum.photos/500?random=1"
+              src="https://media1.tenor.com/m/yvNOUKbCavQAAAAC/anime-blue-archive.gif"
               alt="thumb"
               className="w-[50px] h-[50px] rounded-md object-cover"
             />
