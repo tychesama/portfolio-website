@@ -40,7 +40,7 @@ const MainPage: React.FC = () => {
             className={`bg-[var(--color-card)] rounded shadow p-4 transition transform hover:scale-[1.01] hover:z-10 ${className}`}
           >
             <h2 className="text-lg font-bold text-secondary mb-2">{title}</h2>
-            <p className="text-sm text-[var(--color-text-subtle)]">{content}</p>
+            <span className="text-sm text-[var(--color-text-subtle)]">{content}</span>
           </section>
         ))}
       </main>

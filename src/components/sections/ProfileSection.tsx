@@ -12,12 +12,12 @@ interface ProfileProps {
 }
 
 const ProfileDefault: React.FC<ProfileProps> = ({ profile }) => (
-  <div className="w-full h-full flex flex-col justify-between items-center text-[var(--color-text-main)]">
+  <div className="w-full h-[250px] flex flex-col justify-between items-center text-[var(--color-text-main)]">
     <div className="bg-[var(--color-card)] px-8 py-6 rounded-lg flex items-start gap-6 w-full">
       <Image
         src={pfp}
         alt="Profile"
-        className="w-[250px] h-[250px] rounded-full object-cover"
+        className="w-[250px] h-[250px] rounded-full object-cover" priority
       />
       <div>
         <p className="mb-2 font-semibold">
