@@ -1,6 +1,14 @@
 "use client";
 import React, { useState, useEffect } from "react";
 
+interface Song {
+  isPlaying: boolean;
+  title: string;
+  artist: string;
+  albumImageUrl: string;
+  songUrl: string;
+}
+
 interface HighlightProps {
   highlight: {
     messageOfTheDay: string;
@@ -12,7 +20,7 @@ const HighlightDefault: React.FC<HighlightProps> = ({ highlight }) => {
     "motd"
   );
 
-  const [song, setSong] = useState<any>(null);
+  const [song, setSong] = useState<Song | null>(null);
 
   useEffect(() => {
     if (activeTab === "nowplaying") {

@@ -1,11 +1,6 @@
 import React, { } from "react";
 
-interface ActivityProps {
-  activity: {
-  };
-}
-
-const ActivityDefault: React.FC<ActivityProps> = ({ }) => {
+const ActivityDefault: React.FC = () => {
   return (
     <div className="w-full bg-transparent rounded-lg mt-2 flex flex-col">
       <div className="flex h-[310px]">

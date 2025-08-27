@@ -2,15 +2,14 @@
 
 import { useEffect, useState } from "react";
 
-const themes = ["light", "dark", "alternate"] as const;
-type Theme = typeof themes[number];
+type Theme = "light" | "dark" | "alternate"; 
 
 export const useTheme = () => {
   const [theme, setTheme] = useState<Theme>("dark");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true); // ensure client-only
+    setMounted(true);
   }, []);
 
   useEffect(() => {
