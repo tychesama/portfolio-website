@@ -1,11 +1,15 @@
-import "./globals.css";
-import { ReactNode } from "react";
+import './globals.css';
+import { Metadata } from 'next';
 
-interface RootLayoutProps {
-  children: ReactNode;
-}
+export const metadata: Metadata = {
+  title: 'Portfolio',
+  description: 'Showcasing my projects and work',
+  icons: {
+    icon: '/assets/title/title_icon_yui(1).png', 
+  },
+};
 
-export default function RootLayout({ children }: RootLayoutProps) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>{children}</body>

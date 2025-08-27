@@ -9,6 +9,7 @@ import ThemeSwitcher from '../components/ThemeSwitcher';
 export default function Home() {
   return (
     <React.StrictMode>
+      
       {/* {isSplashVisible && <SplashScreen onFinish={() => setIsSplashVisible(false)} />}
       {!isSplashVisible && <div></div>} */}
       <ThemeSwitcher />
