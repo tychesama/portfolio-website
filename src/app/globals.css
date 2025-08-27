@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Marquee animation for hover */
+@keyframes marquee-hover {
+  0% { transform: translateX(0%); }
+  80% { transform: translateX(-50%); } /* adjust % depending on text length */
+  100% { transform: translateX(0%); }
+}
+
+/* Apply only on hover */
+.hover\:marquee-hover:hover {
+  animation: marquee-hover 3s linear forwards;
+}
+
+/* Container to hide overflow */
+.overflow-hidden-no-ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  padding-right: 0.5rem;
+}

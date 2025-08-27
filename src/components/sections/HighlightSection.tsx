@@ -19,8 +19,9 @@ const HighlightDefault: React.FC<HighlightProps> = ({ highlight }) => {
   const [activeTab, setActiveTab] = useState<"motd" | "nowplaying" | "extra">(
     "motd"
   );
-
+  const [motd, setMotd] = useState<string>("Loading...");
   const [song, setSong] = useState<Song | null>(null);
+  const [animeGif, setAnimeGif] = useState<string>("");
 
   useEffect(() => {
     if (activeTab === "nowplaying") {
@@ -30,6 +31,19 @@ const HighlightDefault: React.FC<HighlightProps> = ({ highlight }) => {
         .catch(() => setSong(null));
     }
   }, [activeTab]);
+  useEffect(() => {
+    fetch("https://zenquotes.io/api/today")
+      .then((res) => res.json())
+      .then((data) => setMotd(data[0]?.q || "Have a nice day!"))
+      .catch(() => setMotd("Have a nice day!"));
+  }, []);
+  useEffect(() => {
+    const TENOR_API_KEY = "YOUR_API_KEY";
+    fetch(`https://tenor.googleapis.com/v2/random?q=anime&key=${TENOR_API_KEY}&limit=1`)
+      .then((res) => res.json())
+      .then((data) => setAnimeGif(data.results[0]?.media_formats?.gif?.url || ""))
+      .catch(() => setAnimeGif(""));
+  }, []);
 
 
   return (
@@ -70,60 +84,98 @@ const HighlightDefault: React.FC<HighlightProps> = ({ highlight }) => {
       </div>
 
 
-      <div className="relative z-1 bg-[var(--color-mini-card)] p-6 min-h-[100px] max-h-[100px] flex items-start gap-4 rounded-tl-lg rounded-b-lg shadow-md">
+      <div className="relative z-1 bg-[var(--color-mini-card)] px-3 py-2 flex flex-col gap-2 rounded-tl-lg rounded-b-lg shadow-md min-h-[105px]">
+
         {activeTab === "motd" && (
-          <>
-            <img
-              src="https://media1.tenor.com/m/yvNOUKbCavQAAAAC/anime-blue-archive.gif"
-              alt="thumb"
-              className="w-[50px] h-[50px] rounded-md object-cover"
-            />
-            <div>
-              <p className="text-sm font-semibold text-[var(--color-text-main)]">
-                Message of the Day
-              </p>
-              <p className="text-sm text-[var(--color-text-subtle)]">
-                {highlight.messageOfTheDay}
+          <div className="flex flex-col gap-1 w-full">
+            <p className="text-xs font-semibold text-[var(--color-text-subtle)] mb-1">
+              Message of the Day
+            </p>
+            <div className="flex items-center gap-3">
+              {animeGif && (
+                <img
+                  src={animeGif}
+                  alt="Anime GIF"
+                  className="w-[60px] h-[60px] rounded-md object-cover flex-shrink-0"
+                />
+              )}
+              <p className="text-sm text-[var(--color-text-main)] flex-1">
+                {motd || highlight.messageOfTheDay}
               </p>
             </div>
-          </>
+          </div>
         )}
 
+
         {activeTab === "nowplaying" && (
-          song && song.isPlaying ? (
-            <>
+          <div className="flex flex-col gap-1 w-full">
+            {song && (
+              <p className="text-xs font-semibold text-[var(--color-text-subtle)]  mb-1">
+                {song.isPlaying ? "Now Playing" : "Last Played"}
+              </p>
+            )}
+            <div className="flex items-center gap-2">
               <img
-                src={song.albumImageUrl}
-                alt={song.title}
-                className="w-[50px] h-[50px] rounded-md object-cover"
+                src={song?.albumImageUrl || "https://via.placeholder.com/50"}
+                alt={song?.title || "Nothing Playing"}
+                className="w-[60px] h-[60px] rounded-md object-cover flex-shrink-0"
               />
-              <div>
-                <p className="text-sm font-semibold text-[var(--color-text-main)]">
-                  Now Playing
-                </p>
-                <a
-                  href={song.songUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-[var(--color-text-subtle)] hover:underline"
-                >
-                  {song.title} – {song.artist}
-                </a>
+              <div className="flex flex-col justify-center w-[calc(100%-55px)] gap-0.5">
+                {song ? (
+                  <div className="flex flex-col justify-center gap-0.5">
+                    <div className="overflow-hidden-no-ellipsis max-w-full">
+                      <a
+                        href={song.songUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-base font-semibold text-[var(--color-text-main)] hover:underline hover:marquee-hover inline-block"
+                      >
+                        {song.title}
+                      </a>
+                    </div>
+
+                    <div className="overflow-hidden-no-ellipsis max-w-full">
+                      <a
+                        href={song.songUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs text-[var(--color-text-subtle)] hover:underline hover:marquee-hover inline-block"
+                      >
+                        {song.artist}
+                      </a>
+                    </div>
+                  </div>
+                ) : (
+                  <p className="text-sm text-[var(--color-text-subtle)]">
+                    🎶 Nothing playing right now
+                  </p>
+                )}
+
               </div>
-            </>
-          ) : (
-            <p className="text-sm text-[var(--color-text-subtle)]">
-              🎶 Nothing playing right now
-            </p>
-          )
+            </div>
+          </div>
         )}
 
         {activeTab === "extra" && (
-          <p className="text-sm text-[var(--color-text-subtle)]">
-            🌟 Some other highlight or info
-          </p>
+          <div className="flex flex-col gap-1 w-full">
+            <p className="text-xs font-semibold text-[var(--color-text-subtle)] mb-1">
+              Extra Info
+            </p>
+            <div className="flex items-center gap-3">
+              <img
+                src="https://media1.tenor.com/m/yvNOUKbCavQAAAAC/anime-blue-archive.gif" // Replace with your extra image
+                alt="Extra"
+                className="w-[60px] h-[60px] rounded-md object-cover flex-shrink-0"
+              />
+              <p className="text-sm text-[var(--color-text-main)] flex-1">
+                🌟 Some other highlight or info
+              </p>
+            </div>
+          </div>
         )}
+
       </div>
+
     </div>
   );
 };
