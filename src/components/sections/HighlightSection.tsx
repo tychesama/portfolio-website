@@ -32,16 +32,16 @@ const HighlightDefault: React.FC<HighlightProps> = ({ highlight }) => {
     }
   }, [activeTab]);
   useEffect(() => {
-  fetch("/api/zenquotes")
-    .then((res) => res.json())
-    .then((data) => setMotd(data.quote))
-    .catch(() => setMotd("Have a nice day!"));
+    fetch("/api/zenquotes")
+      .then((res) => res.json())
+      .then((data) => setMotd(data.quote))
+      .catch(() => setMotd("Have a nice day!"));
 
-  fetch("/api/tenor")
-    .then((res) => res.json())
-    .then((data) => setAnimeGif(data.url))
-    .catch(() => setAnimeGif(""));
-}, []);
+    fetch("/api/tenor")
+      .then((res) => res.json())
+      .then((data) => setAnimeGif(data.url))
+      .catch(() => setAnimeGif(""));
+  }, []);
 
 
 
@@ -52,7 +52,7 @@ const HighlightDefault: React.FC<HighlightProps> = ({ highlight }) => {
           className={`bg-[var(--color-mini-card)] text-sm font-medium rounded-tl-lg transition-transform duration-200
     ${activeTab === "motd"
               ? "text-[var(--color-primary)] border-t-2 border-[var(--color-primary)] translate-y-1 rounded-tr-lg"
-              : "text-[var(--color-text-subtle)] translate-y-3 hover:translate-y-0"
+              : "text-[var(--color-text-subtle)] translate-y-3 hover:translate-y-0 hover:rounded-t-lg"
             } px-2 py-1`}
           onClick={() => setActiveTab("motd")}
         >
@@ -63,7 +63,7 @@ const HighlightDefault: React.FC<HighlightProps> = ({ highlight }) => {
           className={`bg-[var(--color-mini-card)] text-sm font-medium transition-transform duration-200
     ${activeTab === "nowplaying"
               ? "text-[var(--color-primary)] border-t-2 border-[var(--color-primary)] translate-y-1 rounded-t-lg"
-              : "text-[var(--color-text-subtle)] translate-y-3 hover:translate-y-0"
+              : "text-[var(--color-text-subtle)] translate-y-3 hover:translate-y-0 hover:rounded-t-lg"
             } px-2 py-1`}
           onClick={() => setActiveTab("nowplaying")}
         >
@@ -74,7 +74,7 @@ const HighlightDefault: React.FC<HighlightProps> = ({ highlight }) => {
           className={`bg-[var(--color-mini-card)] text-sm font-medium rounded-tr-lg transition-transform duration-200
     ${activeTab === "extra"
               ? "text-[var(--color-primary)] border-t-2 border-[var(--color-primary)] translate-y-1 rounded-tl-lg"
-              : "text-[var(--color-text-subtle)] translate-y-3 hover:translate-y-0"
+              : "text-[var(--color-text-subtle)] translate-y-3 hover:translate-y-0 hover:rounded-t-lg"
             } px-2 py-1`}
           onClick={() => setActiveTab("extra")}
         >
@@ -98,9 +98,10 @@ const HighlightDefault: React.FC<HighlightProps> = ({ highlight }) => {
                   className="w-[60px] h-[60px] rounded-md object-cover flex-shrink-0"
                 />
               )}
-              <p className="text-sm text-[var(--color-text-main)] flex-1">
+              <p className="text-sm text-[var(--color-text-subtle)] flex-1">
                 {motd || highlight.messageOfTheDay}
               </p>
+
             </div>
           </div>
         )}
@@ -110,10 +111,10 @@ const HighlightDefault: React.FC<HighlightProps> = ({ highlight }) => {
           <div className="flex flex-col gap-1 w-full">
             {song && (
               <p className="text-xs font-semibold text-[var(--color-text-subtle)]  mb-1">
-                {song.isPlaying ? "Now Playing" : "Last Played"}
+                {song.isPlaying ? "Now Playing ♫" : "Last Played ♫"}
               </p>
             )}
-            <div className="flex items-center gap-2 overflow-hidden">
+            <div className="flex items-center gap-3 overflow-hidden">
               <img
                 src={song?.albumImageUrl || "https://via.placeholder.com/50"}
                 alt={song?.title || "Nothing Playing"}

@@ -9,7 +9,7 @@ const MainPage: React.FC = () => {
   const sections = [
     { id: 'profile', title: 'Profile', content: <Profile profile={data.profile} />, className: 'col-span-3 row-span-3'},
     { id: 'highlight', title: 'Highlight', content: <Highlight highlight={data.highlight} />, className: 'col-span-1 row-span-1' },
-    { id: 'Activity', title: 'Activity', content: <Activity activity={data.activity} />, className: 'col-span-1 row-span-2' },
+    { id: 'Activity', title: 'Activity', content: <Activity />, className: 'col-span-1 row-span-2' },
     { id: 'projects', title: 'Projects', content: <Projects projects={data.projects} />, className: 'col-span-4 row-span-3' },
     { id: 'skills', title: 'Skills', content: 'Languages, tools, and soft skills.', className: 'col-span-2 row-span-3' },
     { id: 'experience', title: 'Experience', content: 'Recent posts, dev logs, or musings.', className: 'col-span-2 row-span-3' },
