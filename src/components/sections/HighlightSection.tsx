@@ -32,18 +32,17 @@ const HighlightDefault: React.FC<HighlightProps> = ({ highlight }) => {
     }
   }, [activeTab]);
   useEffect(() => {
-    fetch("https://zenquotes.io/api/today")
-      .then((res) => res.json())
-      .then((data) => setMotd(data[0]?.q || "Have a nice day!"))
-      .catch(() => setMotd("Have a nice day!"));
-  }, []);
-  useEffect(() => {
-    const TENOR_API_KEY = "YOUR_API_KEY";
-    fetch(`https://tenor.googleapis.com/v2/random?q=anime&key=${TENOR_API_KEY}&limit=1`)
-      .then((res) => res.json())
-      .then((data) => setAnimeGif(data.results[0]?.media_formats?.gif?.url || ""))
-      .catch(() => setAnimeGif(""));
-  }, []);
+  fetch("/api/zenquotes")
+    .then((res) => res.json())
+    .then((data) => setMotd(data.quote))
+    .catch(() => setMotd("Have a nice day!"));
+
+  fetch("/api/tenor")
+    .then((res) => res.json())
+    .then((data) => setAnimeGif(data.url))
+    .catch(() => setAnimeGif(""));
+}, []);
+
 
 
   return (
@@ -114,7 +113,7 @@ const HighlightDefault: React.FC<HighlightProps> = ({ highlight }) => {
                 {song.isPlaying ? "Now Playing" : "Last Played"}
               </p>
             )}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 overflow-hidden">
               <img
                 src={song?.albumImageUrl || "https://via.placeholder.com/50"}
                 alt={song?.title || "Nothing Playing"}

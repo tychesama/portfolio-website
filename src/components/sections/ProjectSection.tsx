@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { DndContext, closestCorners } from "@dnd-kit/core";
 import type { DragEndEvent } from "@dnd-kit/core";
 import { SortableContext, verticalListSortingStrategy, arrayMove } from "@dnd-kit/sortable";
@@ -47,6 +47,12 @@ const SortableProject: React.FC<{ project: Project }> = ({ project }) => {
 const ProjectDefault: React.FC<ProjectProps> = ({ projects }) => {
   const [projectList, setProjectList] = useState(projects);
 
+  const [client, setClient] = useState(false);
+
+  useEffect(() => {
+    setClient(true); 
+  }, []);
+
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
     if (over && active.id !== over.id) {
@@ -55,6 +61,8 @@ const ProjectDefault: React.FC<ProjectProps> = ({ projects }) => {
       setProjectList(arrayMove(projectList, oldIndex, newIndex));
     }
   };
+
+  if (!client) return null;
 
   return (
     <div className="w-full bg-transparent rounded-lg mt-2 p-4 flex flex-row gap-6">
