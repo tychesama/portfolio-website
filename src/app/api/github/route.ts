@@ -1,5 +1,12 @@
 import { NextResponse } from "next/server";
 
+interface GitHubRepo {
+  name: string;
+  description: string | null;
+  html_url: string;
+  updated_at: string;
+}
+
 export async function GET() {
   try {
     const response = await fetch(
@@ -14,19 +21,25 @@ export async function GET() {
     );
 
     if (!response.ok) {
-      return NextResponse.json({ error: await response.text() }, { status: response.status });
+      return NextResponse.json(
+        { error: await response.text() },
+        { status: response.status }
+      );
     }
 
-    const repos = await response.json();
+    const repos: GitHubRepo[] = await response.json();
+
     return NextResponse.json({
-      lastUpdatedRepos: repos.slice(0, 10).map((repo: any) => ({
+      lastUpdatedRepos: repos.slice(0, 10).map((repo) => ({
         name: repo.name,
         description: repo.description,
         link: repo.html_url,
         lastUpdated: repo.updated_at,
       })),
     });
-  } catch (err: any) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
+  } catch (err) {
+    const message =
+      err instanceof Error ? err.message : "Unexpected server error";
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }
