@@ -1,3 +1,5 @@
+"use client";
+
 import { useTheme } from '../hooks/changeTheme';
 
 const ThemeSwitcher = () => {

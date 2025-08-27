@@ -1,21 +1,23 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",],
-  darkMode: 'class',
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+ 
+    // Or if using `src` directory:
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
   theme: {
     extend: {
       colors: {
-        primary: 'var(--color-primary)',
-        secondary: 'var(--color-secondary)',
-        tertiary: 'var(--color-tertiary)',
-        neutral: 'var(--color-neutral)',
-        alternate: 'var(--color-alternate)',
-      }
+        primary: "var(--color-primary)",
+        secondary: "var(--color-secondary)",
+        tertiary: "var(--color-tertiary)",
+        neutral: "var(--color-neutral)",
+        alternate: "var(--color-alternate)",
+      },
     },
   },
-  plugins: [ 
-    require('tailwind-scrollbar-hide'),
-  ],
-}
-
+  plugins: [require("tailwind-scrollbar-hide")],
+};
