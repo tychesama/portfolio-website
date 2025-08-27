@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 interface HighlightProps {
   highlight: {
@@ -7,9 +7,21 @@ interface HighlightProps {
 }
 
 const HighlightDefault: React.FC<HighlightProps> = ({ highlight }) => {
-  const [activeTab, setActiveTab] = useState<"motd" | "playlist" | "extra">(
+  const [activeTab, setActiveTab] = useState<"motd" | "nowplaying" | "extra">(
     "motd"
   );
+
+  const [song, setSong] = useState<any>(null);
+
+  useEffect(() => {
+    if (activeTab === "nowplaying") {
+      fetch("/api/spotify")
+        .then((res) => res.json())
+        .then(setSong)
+        .catch(() => setSong(null));
+    }
+  }, [activeTab]);
+
 
   return (
     <div className="w-full bg-transparent rounded-lg -mt-6 flex flex-col">
@@ -27,11 +39,11 @@ const HighlightDefault: React.FC<HighlightProps> = ({ highlight }) => {
 
         <button
           className={`bg-[var(--color-mini-card)] text-sm font-medium transition-transform duration-200
-    ${activeTab === "playlist"
+    ${activeTab === "nowplaying"
               ? "text-[var(--color-primary)] border-t-2 border-[var(--color-primary)] translate-y-1 rounded-t-lg"
               : "text-[var(--color-text-subtle)] translate-y-3 hover:translate-y-0"
             } px-2 py-1`}
-          onClick={() => setActiveTab("playlist")}
+          onClick={() => setActiveTab("nowplaying")}
         >
           🎵
         </button>
@@ -68,10 +80,33 @@ const HighlightDefault: React.FC<HighlightProps> = ({ highlight }) => {
           </>
         )}
 
-        {activeTab === "playlist" && (
-          <p className="text-sm text-[var(--color-text-subtle)]">
-            🎵 Spotify playlist goes here
-          </p>
+        {activeTab === "nowplaying" && (
+          song && song.isPlaying ? (
+            <>
+              <img
+                src={song.albumImageUrl}
+                alt={song.title}
+                className="w-[50px] h-[50px] rounded-md object-cover"
+              />
+              <div>
+                <p className="text-sm font-semibold text-[var(--color-text-main)]">
+                  Now Playing
+                </p>
+                <a
+                  href={song.songUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-[var(--color-text-subtle)] hover:underline"
+                >
+                  {song.title} – {song.artist}
+                </a>
+              </div>
+            </>
+          ) : (
+            <p className="text-sm text-[var(--color-text-subtle)]">
+              🎶 Nothing playing right now
+            </p>
+          )
         )}
 
         {activeTab === "extra" && (
