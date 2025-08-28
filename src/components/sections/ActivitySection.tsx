@@ -1,57 +1,92 @@
 "use client";
 import { useEffect, useState } from "react";
 
-interface Repo {
-  name: string;
-  description: string | null;
+interface Commit {
+  message: string;
+  author: string;
+  date: string;
   link: string;
-  lastUpdated: string;
+  repoName: string;
+  repoLink: string;
 }
 
 const ActivityDefault: React.FC = () => {
-  const [repos, setRepos] = useState<Repo[]>([]);
+  const [commits, setCommits] = useState<Commit[]>([]);
 
   useEffect(() => {
-    async function loadRepos() {
+    async function loadCommits() {
       const res = await fetch("/api/github", { cache: "no-store" });
       const data = await res.json();
-      setRepos(data.lastUpdatedRepos || []);
+
+      const flatCommits: Commit[] = [];
+      data.commitsData?.forEach((repo: any) => {
+        repo.commits.forEach((c: any) => {
+          flatCommits.push({ ...c, repoName: repo.repoName, repoLink: repo.repoLink });
+        });
+      });
+
+      flatCommits.sort(
+        (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+      );
+
+      setCommits(flatCommits);
     }
-    loadRepos();
+    loadCommits();
   }, []);
 
+  function timeAgo(dateStr: string) {
+    const date = new Date(dateStr);
+    const now = new Date();
+    const diff = now.getTime() - date.getTime();
+
+    const seconds = Math.floor(diff / 1000);
+    const minutes = Math.floor(seconds / 60);
+    const hours = Math.floor(minutes / 60);
+    const days = Math.floor(hours / 24);
+
+    if (days > 2) return date.toLocaleDateString();
+    if (days >= 1) return `${days} day${days > 1 ? "s" : ""} ago`;
+    if (hours >= 1) return `${hours} hour${hours > 1 ? "s" : ""} ago`;
+    if (minutes >= 1) return `${minutes} minute${minutes > 1 ? "s" : ""} ago`;
+    return `${seconds} second${seconds !== 1 ? "s" : ""} ago`;
+  }
+
   return (
-    <div className="w-full bg-transparent rounded-lg mt-2 flex flex-col">
-      <div className="flex h-[310px]">
-        <div className="bg-[var(--color-mini-card)] p-2 w-full h-full overflow-y-auto flex flex-col gap-4 rounded-lg shadow-inner shadow-black/20 scrollbar-hide">
-          {repos.map((repo, idx) => (
-            <div
-              key={idx}
-              className="bg-[var(--color-card-bg)] p-3 rounded-lg flex flex-col"
+    <div className="w-full mt-2">
+      <div className="bg-[var(--color-mini-card)] w-full h-[310px] overflow-y-auto flex flex-col gap-[1px] rounded-lg shadow-inner shadow-black/20 scrollbar-hide">
+        {commits.map((commit, idx) => (
+          <div
+            key={idx}
+            className="bg-[var(--color-alt-card)] py-2 px-4 min-h-[auto] flex flex-col gap-1 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-150 "
+          >
+
+            <a
+              href={commit.repoLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-semibold text-[var(--color-text-main)] hover:text-[var(--color-text-subtle)] hover:underline"
             >
-              <p className="text-sm font-medium text-[var(--color-primary)]">
-                {repo.name}
-              </p>
-              <p className="text-xs text-[var(--color-text-subtle)] mt-1">
-                {repo.description || "No description provided"}
-              </p>
-              <a
-                href={repo.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs text-blue-500 hover:underline mt-1"
-              >
-                View Repo
-              </a>
-              <p className="text-xs text-[var(--color-text-subtle)] mt-1">
-                Last updated: {new Date(repo.lastUpdated).toLocaleString()}
-              </p>
-            </div>
-          ))}
-        </div>
+              {commit.repoName}
+            </a>
+
+            <a
+              href={commit.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-full text-xs text-[var(--color-text-subtle)] hover:text-[var(--color-text-main)] hover:underline truncate"
+            >
+              {commit.message}
+            </a>
+
+
+            <span className="text-[0.7rem] text-[var(--color-text-subtle)]">
+              {timeAgo(commit.date)}
+            </span>
+          </div>
+        ))}
       </div>
     </div>
   );
-};
+}
 
 export default ActivityDefault;
