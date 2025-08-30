@@ -10,6 +10,12 @@ interface Commit {
   repoLink: string;
 }
 
+interface RepoData {
+  repoName: string;
+  repoLink: string;
+  commits: Commit[];
+}
+
 const ActivityDefault: React.FC = () => {
   const [commits, setCommits] = useState<Commit[]>([]);
 
@@ -19,9 +25,9 @@ const ActivityDefault: React.FC = () => {
       const data = await res.json();
 
       const flatCommits: Commit[] = [];
-      data.commitsData?.forEach((repo: { commits?: Commit[] }) => {
-        repo.commits?.forEach((commit) => {
-          console.log(commit);
+      data.commitsData?.forEach((repo: RepoData) => {
+        repo.commits.forEach((c: Commit) => {
+          flatCommits.push({ ...c, repoName: repo.repoName, repoLink: repo.repoLink });
         });
       });
 
