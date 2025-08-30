@@ -19,7 +19,7 @@ const ActivityDefault: React.FC = () => {
       const data = await res.json();
 
       const flatCommits: Commit[] = [];
-      data.commitsData?.forEach((repo: { commits?: any[] }) => {
+      data.commitsData?.forEach((repo: { commits?: Commit[] }) => {
         repo.commits?.forEach((commit) => {
           console.log(commit);
         });
