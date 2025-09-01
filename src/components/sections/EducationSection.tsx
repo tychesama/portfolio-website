@@ -14,7 +14,7 @@ const EducationSection: React.FC = () => {
         />
       </div>
 
-      <div className="w-2/3 flex flex-col ">
+      <div className="w-2/3 flex flex-col">
         <div className="p-4">
           <h3 className="text-lg font-semibold">College</h3>
           <p className="text-sm text-gray-600">2016 – 2020</p>

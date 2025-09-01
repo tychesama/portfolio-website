@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { DndContext, DragOverlay, pointerWithin, useDroppable } from "@dnd-kit/core";
+import { DndContext, DragOverlay, pointerWithin, useDroppable, useDraggable, defaultDropAnimation } from "@dnd-kit/core";
 import type { DragEndEvent, DragStartEvent } from "@dnd-kit/core";
 import { snapCenterToCursor } from "@dnd-kit/modifiers";
 import { SortableContext, verticalListSortingStrategy, arrayMove } from "@dnd-kit/sortable";
@@ -25,19 +25,53 @@ interface DropZoneProps {
   droppedProject?: Project;
 }
 
-const DropZone: React.FC<DropZoneProps & { activeProject?: Project | null }> = ({ droppedProject, activeProject }) => {
-  const { setNodeRef, isOver } = useDroppable({ id: "drop-zone" });
+const dropAnimation = {
+  ...defaultDropAnimation,
+  duration: 0, 
+};
 
-  const [showDropped, setShowDropped] = useState(false);
+const DraggableExpanded: React.FC<{ project: Project; className?: string }> = ({
+  project,
+  className,
+}) => {
+  const { attributes, listeners, setNodeRef, transform, isDragging } =
+    useDraggable({
+      id: project.name,
+    });
+
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    if (droppedProject) {
-      const timeout = setTimeout(() => setShowDropped(true), 50); 
-      return () => clearTimeout(timeout);
-    } else {
-      setShowDropped(false);
-    }
-  }, [droppedProject]);
+    // trigger fade-in after mount
+    const t = setTimeout(() => setVisible(true), 10);
+    return () => clearTimeout(t);
+  }, []);
+
+  const style = transform
+    ? { transform: `translate3d(${transform.x}px, ${transform.y}px, 0)` }
+    : undefined;
+
+  return (
+    <div
+      ref={setNodeRef}
+      style={style}
+      className={`absolute inset-0 flex items-center justify-center transition-opacity duration-500 
+        ${visible ? "opacity-100" : "opacity-0"} 
+        ${isDragging ? "opacity-50" : ""}`}
+    >
+      <ProjectCard
+        project={project}
+        type="expanded"
+        className={`w-full h-full ${className || ""}`}
+        attributes={attributes}
+        listeners={listeners}
+      />
+    </div>
+  );
+};
+
+const DropZone: React.FC<DropZoneProps & { activeProject?: Project | null }> = ({ droppedProject, activeProject }) => {
+  const { setNodeRef, isOver } = useDroppable({ id: "drop-zone" });
 
   return (
     <div
@@ -64,10 +98,12 @@ const DropZone: React.FC<DropZoneProps & { activeProject?: Project | null }> = (
 
       {droppedProject && (
         <div
-          className={`absolute w-full h-full flex items-center justify-center transition-opacity duration-500 ${showDropped ? "opacity-100" : "opacity-0"
-            }`}
+          className={`absolute inset-0 flex items-center justify-center`}
         >
-          <ProjectCard project={droppedProject} type="expanded" className="w-full h-full" />
+          <DraggableExpanded
+            project={droppedProject}
+            className="max-w-[100%] max-h-[100%]"
+          />
         </div>
       )}
     </div>
@@ -75,7 +111,8 @@ const DropZone: React.FC<DropZoneProps & { activeProject?: Project | null }> = (
 };
 
 const SortableProject: React.FC<{ project: Project }> = ({ project }) => {
-  const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id: project.name });
+  const { attributes, listeners, setNodeRef, transform, transition, isDragging } =
+    useSortable({ id: project.name });
 
   const style = {
     transform: CSS.Transform.toString(transform),
@@ -84,21 +121,18 @@ const SortableProject: React.FC<{ project: Project }> = ({ project }) => {
   };
 
   return (
-    <div
-      ref={setNodeRef}
-      style={{ ...style, borderLeftColor: project.color }}
-      {...attributes}
-      {...listeners}
-      className="bg-[var(--color-mini-card)] p-2 w-[220px] h-[120px] flex flex-col gap-2 rounded-lg shadow-md border-l-4"
-    >
-      <div className="bg-[var(--color-card-bg)] p-3 rounded-lg flex flex-col">
-        <p className="text-sm font-medium text-[var(--color-primary)]">{project.name}</p>
-        <p className="text-xs text-[var(--color-text-subtle)] mt-1 line-clamp-2">{project.description}</p>
-        <p className="text-[10px] text-[var(--color-text-subtle)] mt-1 italic">{project.techstack.join(", ")}</p>
-      </div>
+    <div style={style}>
+      <ProjectCard
+        project={project}
+        type="normal"
+        attributes={attributes}
+        listeners={listeners}
+        setNodeRef={setNodeRef}
+      />
     </div>
   );
 };
+
 
 const ProjectDefault: React.FC<ProjectProps> = ({ projects }) => {
   const [projectList, setProjectList] = useState(projects);
@@ -133,7 +167,7 @@ const ProjectDefault: React.FC<ProjectProps> = ({ projects }) => {
 
     setActiveProject(null);
   };
-
+  
   if (!client) return null;
 
   return (
@@ -148,7 +182,7 @@ const ProjectDefault: React.FC<ProjectProps> = ({ projects }) => {
           items={projectList.map((p) => p.name)}
           strategy={verticalListSortingStrategy}
         >
-          <div className="flex flex-col gap-3 h-[490px] w-[245px] overflow-y-auto pr-2 scrollbar-hide border-r border-[var(--color-primary)]" style={{ borderColor: "rgba(81, 86, 94, 0.3)" }}>
+          <div className="flex flex-col gap-3 h-[490px] w-[245px] overflow-y-auto pr-2 scrollbar-hide border-r" style={{ borderColor: "rgba(81, 86, 94, 0.3)" }}>
             {projectList.map((project) => (
               <SortableProject key={project.name} project={project} />
             ))}
@@ -158,10 +192,11 @@ const ProjectDefault: React.FC<ProjectProps> = ({ projects }) => {
         <DragOverlay modifiers={[snapCenterToCursor]}>
           {activeProject ? (
             <div className="pointer-events-none">
-              <ProjectCard project={activeProject} />
+              <ProjectCard project={activeProject} type="normal" />
             </div>
           ) : null}
         </DragOverlay>
+
         <DropZone droppedProject={droppedProjects[0]} activeProject={activeProject} />
       </DndContext>
     </div>

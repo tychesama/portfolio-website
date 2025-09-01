@@ -15,16 +15,21 @@ interface ProjectCardProps {
   project: Project;
   className?: string;
   type?: "normal" | "expanded";
+  attributes?: any;
+  listeners?: any;
+  setNodeRef?: (node: HTMLElement | null) => void;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ project, className, type = "normal" }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ project, className, type = "normal", attributes,
+  listeners,
+  setNodeRef, }) => {
   const [showContent, setShowContent] = useState(false);
 
   const baseStyles = `bg-[var(--color-mini-card)] p-2 flex flex-col gap-2 rounded-lg shadow-lg border-l-4`;
 
   useEffect(() => {
     if (type === "expanded") {
-      setShowContent(false); 
+      setShowContent(false);
       const timeout = setTimeout(() => setShowContent(true), 300);
       return () => clearTimeout(timeout);
     } else {
@@ -34,7 +39,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, className, type = "n
 
   if (type === "normal") {
     return (
-      <div className={`${baseStyles} flex-1 ${className || ""}`} style={{ borderLeftColor: project.color }}>
+      <div
+        ref={setNodeRef}
+        {...attributes}
+        {...listeners}
+        className={`${baseStyles} flex-1 ${className || ""}`}
+        style={{ borderLeftColor: project.color }}
+      >
         <div className="bg-[var(--color-card-bg)] p-3 rounded-lg flex flex-col">
           <p className="text-sm font-medium text-[var(--color-primary)]">{project.name}</p>
           <p className="text-xs text-[var(--color-text-subtle)] mt-1 line-clamp-2">{project.description}</p>
@@ -46,6 +57,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, className, type = "n
 
   return (
     <div
+      ref={setNodeRef}
       className={`${baseStyles} w-full h-full ${className || ""}`}
       style={{ borderLeftColor: project.color }}
     >
@@ -54,34 +66,36 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, className, type = "n
           showContent ? "opacity-100" : "opacity-0"
         }`}
       >
-        
         <div className="flex justify-between items-center">
           <h2 className="text-lg font-bold text-[var(--color-primary)]">{project.name}</h2>
-          <span className="text-sm text-[var(--color-text-subtle)]">Last updated: 2025-08-28</span>
+
+          {/* Drag Handle */}
+          <div
+            {...attributes}
+            {...listeners}
+            className="cursor-grab active:cursor-grabbing px-2 py-1 rounded text-[var(--color-text-subtle)]"
+          >
+            ⠿⠿⠿⠿⠿⠿⠿⠿
+          </div>
+          <div>Random</div>
         </div>
 
-        <div className="bg-[var(--color-mini-card)] rounded-md w-full h-28 flex items-center justify-center text-[var(--color-text-subtle)] text-sm">
-          Image Preview
-        </div>
-
-        <p className="text-sm text-[var(--color-text-subtle)]">{project.description}</p>
-
-        <p className="text-xs text-[var(--color-text-subtle)] italic">
-          Tech Stack: {project.techstack.join(", ")}
-        </p>
-
-        <div className="flex flex-row gap-4 text-[var(--color-text-subtle)] text-xs mt-auto">
-          <div>
-            <p className="font-medium">Commits</p>
-            <p>42</p>
+        <div className="w-full h-full flex">
+          {/* left */}
+          <div className="flex flex-col h-full justify-between flex-2 pr-4 border-r" style={{ borderColor: "rgba(81, 86, 94, 0.3)" }}>
+            <p className="text-sm text-[var(--color-text-subtle)]">{project.description}</p>
+            <p className="text-xs text-[var(--color-text-subtle)] italic">
+              Tech Stack: {project.techstack.join(", ")}
+            </p>
           </div>
-          <div>
-            <p className="font-medium">Created</p>
-            <p>2025-01-15</p>
-          </div>
-          <div>
-            <p className="font-medium">Updated</p>
-            <p>2025-08-28</p>
+
+          {/* right */}
+          <div className="pl-7 bg-[var(--color-mini-card)] rounded-md w-[600px] h-full flex items-center justify-center">
+            <img
+              src="https://media.istockphoto.com/id/517188688/photo/mountain-landscape.jpg?s=2048x2048&w=is&k=20&c=Xa_wH_pZFMWNX8EPtufv9KSvS1OzUPus7C0Br2ZIMDg="
+              alt="Yui"
+              className="w-full h-auto object-cover"
+            />
           </div>
         </div>
       </div>
