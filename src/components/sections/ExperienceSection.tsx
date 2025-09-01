@@ -1,13 +1,18 @@
 "use client";
 
 import React from "react";
+import ExperienceCard from "../common/ExperienceCard";
+
 
 const ExperienceSection: React.FC = () => {
   return (
     <div className="p-6">
-      <h1 className="text-2xl font-bold">Hello World</h1>
-      <p className="text-[var(--color-text-subtle)]">
-      </p>
+      <ExperienceCard
+        experience={{
+          company: "Jairosoft Inc.",
+          logo: "/assets/titlegif.gif",
+        }}
+      />
     </div>
   );
 };

@@ -164,22 +164,42 @@
   ],
   "skills": {
     "technical": [
-      "JavaScript",
-      "Python",
-      "React",
-      "Node.js",
-      "SQL"
+      {
+        "name": "React",
+        "stars": 3
+      },
+      {
+        "name": "TypeScript",
+        "stars": 2
+      },
+      {
+        "name": "Next.js",
+        "stars": 3
+      }
     ],
     "tools": [
-      "Git",
-      "Docker",
-      "VS Code",
-      "Linux"
+      {
+        "name": "Git",
+        "stars": 3
+      },
+      {
+        "name": "Figma",
+        "stars": 2
+      }
     ],
     "softSkills": [
-      "Teamwork",
-      "Problem-Solving",
-      "Communication"
+      {
+        "name": "Teamwork",
+        "stars": 3
+      },
+      {
+        "name": "Communication",
+        "stars": 2
+      },
+      {
+        "name": "Problem-Solving",
+        "stars": 1
+      }
     ]
   },
   "experience": [

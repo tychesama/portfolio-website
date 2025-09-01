@@ -1,6 +1,15 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import type { Project } from "./types";
+
+export interface Project {
+  name: string;
+  description: string;
+  techstack: string[];
+  link: string;
+  images?: string[];
+  color: string;
+}
+
 
 interface ProjectCardProps {
   project: Project;
@@ -9,14 +18,14 @@ interface ProjectCardProps {
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, className, type = "normal" }) => {
-  const [showContent, setShowContent] = useState(false); // ✅ inside component
+  const [showContent, setShowContent] = useState(false);
 
   const baseStyles = `bg-[var(--color-mini-card)] p-2 flex flex-col gap-2 rounded-lg shadow-lg border-l-4`;
 
   useEffect(() => {
     if (type === "expanded") {
-      setShowContent(false); // reset when switching
-      const timeout = setTimeout(() => setShowContent(true), 300); // delay inner content
+      setShowContent(false); 
+      const timeout = setTimeout(() => setShowContent(true), 300);
       return () => clearTimeout(timeout);
     } else {
       setShowContent(true);
@@ -35,7 +44,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, className, type = "n
     );
   }
 
-  // Expanded UI
   return (
     <div
       className={`${baseStyles} w-full h-full ${className || ""}`}
@@ -46,26 +54,22 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, className, type = "n
           showContent ? "opacity-100" : "opacity-0"
         }`}
       >
-        {/* Header */}
+        
         <div className="flex justify-between items-center">
           <h2 className="text-lg font-bold text-[var(--color-primary)]">{project.name}</h2>
           <span className="text-sm text-[var(--color-text-subtle)]">Last updated: 2025-08-28</span>
         </div>
 
-        {/* Placeholder for images */}
         <div className="bg-[var(--color-mini-card)] rounded-md w-full h-28 flex items-center justify-center text-[var(--color-text-subtle)] text-sm">
           Image Preview
         </div>
 
-        {/* Description */}
         <p className="text-sm text-[var(--color-text-subtle)]">{project.description}</p>
 
-        {/* Tech stack */}
         <p className="text-xs text-[var(--color-text-subtle)] italic">
           Tech Stack: {project.techstack.join(", ")}
         </p>
 
-        {/* Extra info like commits, dates */}
         <div className="flex flex-row gap-4 text-[var(--color-text-subtle)] text-xs mt-auto">
           <div>
             <p className="font-medium">Commits</p>
