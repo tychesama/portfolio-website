@@ -9,7 +9,7 @@ const ExperienceSection: React.FC = () => {
     <div className="p-6">
       <ExperienceCard
         experience={{
-          company: "Jairosoft Inc.",
+          company: "idk lmao",
           logo: "/assets/titlegif.gif",
         }}
       />

@@ -72,7 +72,7 @@ const ActivityDefault: React.FC = () => {
         {commits.map((commit, idx) => (
           <div
             key={idx}
-            className="bg-[var(--color-alt-card)] py-2 px-4 min-h-[auto] flex flex-col gap-1 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-150 "
+            className="bg-[var(--color-mini-card)] py-2 px-4 min-h-[auto] flex flex-col gap-1 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-150 "
           >
 
             <a

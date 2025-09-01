@@ -40,7 +40,6 @@ const SkillsCard: React.FC<SkillsCardProps> = ({ skills }) => {
         Skills
       </h2>
 
-      {/* Technical */}
       <div>
         <p className="text-sm font-semibold text-blue-400 mb-2">Technical</p>
         <div className="flex flex-wrap gap-3">
@@ -56,7 +55,6 @@ const SkillsCard: React.FC<SkillsCardProps> = ({ skills }) => {
         </div>
       </div>
 
-      {/* Tools */}
       <div>
         <p className="text-sm font-semibold text-green-400 mb-2">Tools</p>
         <div className="flex flex-wrap gap-3">
@@ -72,7 +70,6 @@ const SkillsCard: React.FC<SkillsCardProps> = ({ skills }) => {
         </div>
       </div>
 
-      {/* Soft Skills */}
       <div>
         <p className="text-sm font-semibold text-white mb-2">Soft Skills</p>
         <div className="flex flex-wrap gap-3">

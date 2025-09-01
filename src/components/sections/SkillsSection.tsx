@@ -3,7 +3,7 @@ import React from "react";
 
 interface Skill {
   name: string;
-  stars: number; // 1–3
+  stars: number; 
 }
 
 interface Skills {
@@ -36,7 +36,6 @@ const renderStars = (count: number) => {
 const SkillsCard: React.FC<SkillsCardProps> = ({ skills }) => {
   return (
     <div className="flex flex-col gap-6">
-      {/* Technical */}
       <div>
         <p className="text-sm font-semibold text-blue-400 mb-2">Technical</p>
         <div className="flex flex-wrap gap-2">
@@ -52,7 +51,6 @@ const SkillsCard: React.FC<SkillsCardProps> = ({ skills }) => {
         </div>
       </div>
 
-      {/* Tools */}
       <div>
         <p className="text-sm font-semibold text-green-400 mb-2">Tools</p>
         <div className="flex flex-wrap gap-2">
@@ -68,7 +66,6 @@ const SkillsCard: React.FC<SkillsCardProps> = ({ skills }) => {
         </div>
       </div>
 
-      {/* Soft Skills */}
       <div>
         <p className="text-sm font-semibold text-white mb-2">Soft Skills</p>
         <div className="flex flex-wrap gap-2">

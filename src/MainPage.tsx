@@ -6,6 +6,7 @@ import Projects from './components/sections/ProjectSection';
 import Skills from './components/sections/SkillsSection';
 import Experience from './components/sections/ExperienceSection';
 import Certifications from './components/sections/CertificationsSection';
+import Education from './components/sections/EducationSection';
 import data from './data.json'; 
 
 const MainPage: React.FC = () => {
@@ -19,7 +20,7 @@ const MainPage: React.FC = () => {
     { id: 'certifications', title: 'Certifications', content: <Certifications />, className: 'col-span-3 row-span-1'},
     { id: 'funfacts', title: 'Fun Facts', content: 'Email, socials, or resume download.', className: 'col-span-1 row-span-3' },
     { id: 'techstack', title: 'Extra', content: 'Email, socials, or resume download.', className: 'col-span-3 row-span-2' },
-    { id: 'education', title: 'Education', content: 'Email, socials, or resume download.', className: 'col-span-4 row-span-2' },
+    { id: 'education', title: 'Education', content: <Education />, className: 'col-span-4 row-span-2' },
   ];
 
   return (

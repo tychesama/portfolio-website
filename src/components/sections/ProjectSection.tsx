@@ -32,7 +32,7 @@ const DropZone: React.FC<DropZoneProps & { activeProject?: Project | null }> = (
 
   useEffect(() => {
     if (droppedProject) {
-      const timeout = setTimeout(() => setShowDropped(true), 50); // small delay for fade-in
+      const timeout = setTimeout(() => setShowDropped(true), 50); 
       return () => clearTimeout(timeout);
     } else {
       setShowDropped(false);
@@ -42,7 +42,7 @@ const DropZone: React.FC<DropZoneProps & { activeProject?: Project | null }> = (
   return (
     <div
       ref={setNodeRef}
-      className={`relative flex-1 rounded-xl min-h-[310px] transition-colors duration-300 
+      className={`ml-5 relative flex-1 rounded-xl min-h-[310px] transition-colors duration-300 
         ${droppedProject
           ? "border-none"
           : isOver
@@ -56,14 +56,12 @@ const DropZone: React.FC<DropZoneProps & { activeProject?: Project | null }> = (
         </span>
       )}
 
-      {/* Hover preview */}
       {isOver && !droppedProject && activeProject && (
         <div className="absolute w-full h-full flex items-center justify-center opacity-50">
           <ProjectCard project={activeProject} type="expanded" className="w-full h-full" />
         </div>
       )}
 
-      {/* Dropped project with fade-in */}
       {droppedProject && (
         <div
           className={`absolute w-full h-full flex items-center justify-center transition-opacity duration-500 ${showDropped ? "opacity-100" : "opacity-0"
@@ -75,8 +73,6 @@ const DropZone: React.FC<DropZoneProps & { activeProject?: Project | null }> = (
     </div>
   );
 };
-
-
 
 const SortableProject: React.FC<{ project: Project }> = ({ project }) => {
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id: project.name });
@@ -141,7 +137,7 @@ const ProjectDefault: React.FC<ProjectProps> = ({ projects }) => {
   if (!client) return null;
 
   return (
-    <div className="w-full bg-transparent rounded-lg mt-2 p-4 flex flex-row gap-6">
+    <div className="w-full bg-transparent rounded-lg mt-2 p-4 flex flex-row">
       <DndContext
         collisionDetection={pointerWithin}
         onDragStart={handleDragStart}
@@ -152,7 +148,7 @@ const ProjectDefault: React.FC<ProjectProps> = ({ projects }) => {
           items={projectList.map((p) => p.name)}
           strategy={verticalListSortingStrategy}
         >
-          <div className="flex flex-col gap-3 h-[490px] w-[250px] overflow-y-auto pr-2 scrollbar-hide">
+          <div className="flex flex-col gap-3 h-[490px] w-[245px] overflow-y-auto pr-2 scrollbar-hide border-r border-[var(--color-primary)]" style={{ borderColor: "rgba(81, 86, 94, 0.3)" }}>
             {projectList.map((project) => (
               <SortableProject key={project.name} project={project} />
             ))}
