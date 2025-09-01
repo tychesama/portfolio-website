@@ -3,6 +3,8 @@ import Profile from './components/sections/ProfileSection';
 import Highlight from './components/sections/HighlightSection';
 import Activity from './components/sections/ActivitySection';
 import Projects from './components/sections/ProjectSection';
+import Skills from './components/sections/SkillsSection';
+import Experience from './components/sections/ExperienceSection';
 import data from './data.json'; 
 
 const MainPage: React.FC = () => {
@@ -11,8 +13,8 @@ const MainPage: React.FC = () => {
     { id: 'highlight', title: 'Highlight', content: <Highlight highlight={data.highlight} />, className: 'col-span-1 row-span-1' },
     { id: 'Activity', title: 'Activity', content: <Activity />, className: 'col-span-1 row-span-2' },
     { id: 'projects', title: 'Projects', content: <Projects projects={data.projects} />, className: 'col-span-4 row-span-3' },
-    { id: 'skills', title: 'Skills', content: 'Languages, tools, and soft skills.', className: 'col-span-2 row-span-3' },
-    { id: 'experience', title: 'Experience', content: 'Recent posts, dev logs, or musings.', className: 'col-span-2 row-span-3' },
+    { id: 'skills', title: 'Skills', content: <Skills />, className: 'col-span-2 row-span-3' },
+    { id: 'experience', title: 'Job Experience', content: <Experience />, className: 'col-span-2 row-span-3' },
     { id: 'certifications', title: 'Certifications', content: 'Email, socials, or resume download.', className: 'col-span-3 row-span-1'},
     { id: 'funfacts', title: 'Fun Facts', content: 'Email, socials, or resume download.', className: 'col-span-1 row-span-3' },
     { id: 'techstack', title: 'Extra', content: 'Email, socials, or resume download.', className: 'col-span-3 row-span-2' },

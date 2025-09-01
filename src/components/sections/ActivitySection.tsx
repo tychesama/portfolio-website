@@ -58,7 +58,16 @@ const ActivityDefault: React.FC = () => {
   }
 
   return (
-    <div className="w-full mt-2">
+    <div className="w-full mt-2 relative">
+      {commits.length === 0 && (
+        <div className="absolute inset-0 flex items-center justify-center bg-black/40 rounded-md">
+          <img
+            src="https://media.tenor.com/WX_LDjYUrMsAAAAi/loading.gif"
+            alt="Loading..."
+            className="w-6 h-6"
+          />
+        </div>
+      )}
       <div className="bg-[var(--color-mini-card)] w-full h-[310px] overflow-y-auto flex flex-col gap-[1px] rounded-lg shadow-inner shadow-black/20 scrollbar-hide">
         {commits.map((commit, idx) => (
           <div

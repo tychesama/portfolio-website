@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 interface Song {
   isPlaying: boolean;
@@ -83,11 +83,20 @@ const HighlightDefault: React.FC<HighlightProps> = ({ highlight }) => {
       </div>
 
 
-      <div className="relative z-1 bg-[var(--color-mini-card)] px-3 py-2 flex flex-col gap-2 rounded-tl-lg rounded-b-lg shadow-md min-h-[105px]">
+      <div className="relative z-1 bg-[var(--color-mini-card)] px-3 py-2 flex flex-col gap-2 rounded-tl-lg rounded-b-lg shadow-md min-h-[105px] max-h-[105px]">
 
         {activeTab === "motd" && (
           <div className="flex flex-col gap-1 w-full">
-            <p className="text-xs font-semibold text-[var(--color-text-subtle)] mb-1">
+            {(!animeGif || !motd) && (
+                <div className="absolute inset-0 flex items-center justify-center bg-black/40 rounded-md">
+                  <img
+                    src="https://media.tenor.com/WX_LDjYUrMsAAAAi/loading.gif"
+                    alt="Loading..."
+                    className="w-6 h-6"
+                  />
+                </div>
+              )}
+            <p className="text-xs font-semibold text-[var(--color-text-subtle)] mb-1 overflow-y-auto">
               Message of the Day
             </p>
             <div className="flex items-center gap-3">
@@ -98,10 +107,11 @@ const HighlightDefault: React.FC<HighlightProps> = ({ highlight }) => {
                   className="w-[60px] h-[60px] rounded-md object-cover flex-shrink-0"
                 />
               )}
-              <p className="text-sm text-[var(--color-text-subtle)] flex-1">
-                {motd || highlight.messageOfTheDay}
-              </p>
-
+              <div className="flex-1 min-w-0 h-[60px]">
+                <div className="text-sm text-[var(--color-text-subtle)] h-full overflow-y-auto scrollbar-hide break-words">
+                  {motd || highlight.messageOfTheDay}
+                </div>
+              </div>
             </div>
           </div>
         )}
@@ -109,14 +119,25 @@ const HighlightDefault: React.FC<HighlightProps> = ({ highlight }) => {
 
         {activeTab === "nowplaying" && (
           <div className="flex flex-col gap-1 w-full">
-            {song && (
-              <p className="text-xs font-semibold text-[var(--color-text-subtle)]  mb-1">
-                {song.isPlaying ? "Now Playing ♫" : "Last Played ♫"}
-              </p>
-            )}
+            <p className="text-xs font-semibold text-[var(--color-text-subtle)] mb-1">
+              {!song
+                ? "Loading ♫"
+                : song.isPlaying
+                  ? "Now Playing ♫"
+                  : "Last Played ♫"}
+            </p>
             <div className="flex items-center gap-3 overflow-hidden">
+              {(!song?.albumImageUrl || !song?.title) && (
+                <div className="absolute inset-0 flex items-center justify-center bg-black/40 rounded-md">
+                  <img
+                    src="https://media.tenor.com/WX_LDjYUrMsAAAAi/loading.gif"
+                    alt="Loading..."
+                    className="w-6 h-6"
+                  />
+                </div>
+              )}
               <img
-                src={song?.albumImageUrl || "https://via.placeholder.com/50"}
+                src={song?.albumImageUrl || "https://media.tenor.com/_iQh56E5r5YAAAAi/question-mark-question.gif"}
                 alt={song?.title || "Nothing Playing"}
                 className="w-[60px] h-[60px] rounded-md object-cover flex-shrink-0"
               />
@@ -163,7 +184,7 @@ const HighlightDefault: React.FC<HighlightProps> = ({ highlight }) => {
             </p>
             <div className="flex items-center gap-3">
               <img
-                src="https://media1.tenor.com/m/yvNOUKbCavQAAAAC/anime-blue-archive.gif" // Replace with your extra image
+                src="https://media1.tenor.com/m/yvNOUKbCavQAAAAC/anime-blue-archive.gif"
                 alt="Extra"
                 className="w-[60px] h-[60px] rounded-md object-cover flex-shrink-0"
               />
@@ -176,7 +197,7 @@ const HighlightDefault: React.FC<HighlightProps> = ({ highlight }) => {
 
       </div>
 
-    </div>
+    </div >
   );
 };
 
