@@ -25,11 +25,6 @@ interface DropZoneProps {
   droppedProject?: Project;
 }
 
-const dropAnimation = {
-  ...defaultDropAnimation,
-  duration: 0, 
-};
-
 const DraggableExpanded: React.FC<{ project: Project; className?: string }> = ({
   project,
   className,
