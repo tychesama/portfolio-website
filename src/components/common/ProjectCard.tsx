@@ -15,8 +15,8 @@ interface ProjectCardProps {
   project: Project;
   className?: string;
   type?: "normal" | "expanded";
-  attributes?: any;
-  listeners?: any;
+  attributes?: Record<string, unknown>;
+  listeners?: Record<string, unknown>;
   setNodeRef?: (node: HTMLElement | null) => void;
 }
 
