@@ -57,7 +57,7 @@ const SkillsCard: React.FC<SkillsCardProps> = ({ skills }) => {
           {skills.tools.map((tool, idx) => (
             <div
               key={idx}
-              className="px-2 py-2 text-xs w-[140px] h-[35px] rounded-md bg-blue-500/70 text-white border border-blue-400/30 flex flex-col items-start"
+              className="px-2 py-2 text-xs w-[140px] h-[35px] rounded-md bg-green-500/80 text-white border border-blue-400/30 flex flex-col items-start"
             >
               <span>🟢 {tool.name}</span>
               {renderStars(tool.stars)}
@@ -72,7 +72,7 @@ const SkillsCard: React.FC<SkillsCardProps> = ({ skills }) => {
           {skills.softSkills.map((soft, idx) => (
             <div
               key={idx}
-              className="px-2 py-2 text-xs w-[140px] h-[35px] rounded-md bg-blue-500/70 text-white border border-blue-400/30 flex flex-col items-start"
+              className="px-2 py-2 text-xs w-[140px] h-[35px] rounded-md bg-gray-500/90 text-white border border-blue-400/30 flex flex-col items-start"
             >
               <span>🟤 {soft.name}</span>
               {renderStars(soft.stars)}

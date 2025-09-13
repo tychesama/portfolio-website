@@ -18,9 +18,11 @@ const MainPage: React.FC = () => {
     { id: 'experience', title: 'Job Experience', content: <Experience experiences={data.experience} />, className: 'col-span-1 row-span-3' },
     { id: 'skills', title: 'Skills', content: <Skills skills={data.skills}/>, className: 'col-span-3 row-span-3' },
     { id: 'certifications', title: 'Certifications', content: <Certifications certifications={data.certifications} />, className: 'col-span-4 row-span-1'},
-    { id: 'techstack', title: 'Extra', content: 'Email, socials, or resume download.', className: 'col-span-3 row-span-2' },
     { id: 'funfacts', title: 'Fun Facts', content: 'Email, socials, or resume download.', className: 'col-span-1 row-span-2' },
-    { id: 'education', title: 'Education', content: <Education />, className: 'col-span-4 row-span-2' },
+    { id: 'techstack', title: 'Extra', content: 'Email, socials, or resume download.', className: 'col-span-3 row-span-2' },
+    { id: 'education', title: 'Education', content: <Education />, className: 'col-span-2 row-span-2' },
+    { id: 'random', title: 'Random', content: "<Education />", className: 'col-span-1 row-span-2' },
+    { id: 'random2', title: 'Random', content: "<Education />", className: 'col-span-1 row-span-2' },
   ];
 
   return (

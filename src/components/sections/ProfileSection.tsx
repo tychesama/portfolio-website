@@ -20,7 +20,7 @@ const ProfileDefault: React.FC<ProfileProps> = ({ profile }) => (
       </div>
       <div>
         <p className="mt-20 mb-4 text-[30px] font-bold tracking-wide text-[var(--color-primary)]">
-          Hi, my name is {profile.nickname}
+          Hi, my name is {profile.nickname}.
         </p>
         <p className="text-base text-[var(--color-text-subtle)] leading-relaxed italic">
           {profile.about}

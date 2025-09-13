@@ -5,7 +5,7 @@ import React from "react";
 const EducationSection: React.FC = () => {
   return (
     <section className="w-full flex divide-x divide-[var(--color-primary)]">
-      <div className="w-1/4 flex flex-col items-center justify-center p-4">
+      <div className="w-1/3 flex flex-col items-center justify-center p-4">
         <img
           src="/assets/addu.png"
           alt="ADDU LOGO"
@@ -16,7 +16,7 @@ const EducationSection: React.FC = () => {
         </p>
       </div>
 
-      <div className="w-2/3 flex flex-col">
+      <div className="flex flex-col">
         <div className="p-4">
           <h3 className="text-lg font-semibold text-[var(--color-text-main)]">College</h3>
           <p className="text-sm text-[var(--color-text-subtle)]">2020 – present</p>
