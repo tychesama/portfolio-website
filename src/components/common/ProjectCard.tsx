@@ -41,8 +41,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, className, type = "n
     return (
       <div
         ref={setNodeRef}
-        {...attributes}
-        {...listeners}
+        {...(attributes || {})}
+        {...(listeners || {})}
         className={`${baseStyles} flex-1 ${className || ""}`}
         style={{ borderLeftColor: project.color }}
       >
@@ -62,9 +62,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, className, type = "n
       style={{ borderLeftColor: project.color }}
     >
       <div
-        className={`bg-[var(--color-card-bg)] p-4 rounded-lg flex flex-col gap-3 h-full transition-opacity duration-500 ${
-          showContent ? "opacity-100" : "opacity-0"
-        }`}
+        className={`bg-[var(--color-card-bg)] p-4 rounded-lg flex flex-col gap-3 h-full transition-opacity duration-500 ${showContent ? "opacity-100" : "opacity-0"
+          }`}
       >
         <div className="flex justify-between items-center">
           <h2 className="text-lg font-bold text-[var(--color-primary)]">{project.name}</h2>

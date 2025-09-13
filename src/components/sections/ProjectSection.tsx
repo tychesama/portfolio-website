@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { DndContext, DragOverlay, pointerWithin, useDroppable, useDraggable, defaultDropAnimation } from "@dnd-kit/core";
+import { DndContext, DragOverlay, pointerWithin, useDroppable, useDraggable } from "@dnd-kit/core";
 import type { DragEndEvent, DragStartEvent } from "@dnd-kit/core";
 import { snapCenterToCursor } from "@dnd-kit/modifiers";
 import { SortableContext, verticalListSortingStrategy, arrayMove } from "@dnd-kit/sortable";
