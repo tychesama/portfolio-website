@@ -68,35 +68,45 @@ const ActivityDefault: React.FC = () => {
           />
         </div>
       )}
-      <div className="bg-[var(--color-mini-card)] w-full h-[310px] overflow-y-auto flex flex-col gap-[1px] rounded-lg shadow-inner shadow-black/20 scrollbar-hide">
+      <div className="mt-1 bg-gradient-to-b from-[var(--color-mini-card)] to-[color-mix(in_srgb,var(--color-mini-card)_65%,black)] shadow-md w-full h-[315px] overflow-y-auto flex flex-col gap-[1px] scrollbar-hide">
+        <div className="sticky -top-px top-0 z-10 px-3 py-2 bg-[var(--color-mini-card)]">
+          <p className="text-xs font-semibold text-[var(--color-text-subtle)] tracking-wide">
+            Sourced from GitHub
+          </p>
+        </div>
         {commits.map((commit, idx) => (
           <div
             key={idx}
-            className="bg-[var(--color-mini-card)] py-2 px-4 min-h-[auto] flex flex-col gap-1 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-150 "
+            className="bg-[var(--color-mini-card)] hover:bg-[--color-mini-card-hover] py-2 px-3 min-h-[auto] flex items-center gap-3 shadow-sm hover:shadow-md transition-shadow duration-150 "
           >
+            <img
+              src="https://media1.tenor.com/m/yvNOUKbCavQAAAAC/anime-blue-archive.gif"
+              alt="Extra"
+              className="w-[35px] h-[35px] rounded-sm object-cover flex-shrink-0"
+            />
+            <div className="flex flex-col gap-0 min-w-0">
+              <a
+                href={commit.repoLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-semibold text-[var(--color-text-main)] hover:text-[var(--color-text-subtle)] hover:underline truncate"
+              >
+                {commit.repoName}
+              </a>
 
-            <a
-              href={commit.repoLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm font-semibold text-[var(--color-text-main)] hover:text-[var(--color-text-subtle)] hover:underline"
-            >
-              {commit.repoName}
-            </a>
+              <a
+                href={commit.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full text-xs text-[var(--color-text-subtle)] hover:text-[var(--color-text-main)] hover:underline truncate"
+              >
+                {commit.message}
+              </a>
 
-            <a
-              href={commit.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block w-full text-xs text-[var(--color-text-subtle)] hover:text-[var(--color-text-main)] hover:underline truncate"
-            >
-              {commit.message}
-            </a>
-
-
-            <span className="text-[0.7rem] text-[var(--color-text-subtle)]">
-              {timeAgo(commit.date)}
-            </span>
+              <span className="text-[0.7rem] text-[var(--color-text-subtle)]">
+                {timeAgo(commit.date)}
+              </span>
+            </div>
           </div>
         ))}
       </div>

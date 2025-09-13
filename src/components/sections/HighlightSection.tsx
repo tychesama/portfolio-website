@@ -46,14 +46,14 @@ const HighlightDefault: React.FC<HighlightProps> = ({ highlight }) => {
 
 
   return (
-    <div className="w-full bg-transparent rounded-lg -mt-6 flex flex-col">
+    <div className="w-full bg-transparent rounded-lg -mt-8 flex flex-col">
       <div className="flex justify-end relative z-0">
         <button
           className={`bg-[var(--color-mini-card)] text-sm font-medium rounded-tl-lg transition-transform duration-200
     ${activeTab === "motd"
-              ? "text-[var(--color-primary)] border-t-2 border-[var(--color-primary)] translate-y-1 rounded-tr-lg"
+              ? "text-[var(--color-primary)] border-t-2 border-[var(--color-primary)] translate-y-0 rounded-tr-lg"
               : "text-[var(--color-text-subtle)] translate-y-3 hover:translate-y-0 hover:rounded-t-lg"
-            } px-2 py-1`}
+            } px-4 py-1`}
           onClick={() => setActiveTab("motd")}
         >
           ❤️
@@ -62,9 +62,9 @@ const HighlightDefault: React.FC<HighlightProps> = ({ highlight }) => {
         <button
           className={`bg-[var(--color-mini-card)] text-sm font-medium transition-transform duration-200
     ${activeTab === "nowplaying"
-              ? "text-[var(--color-primary)] border-t-2 border-[var(--color-primary)] translate-y-1 rounded-t-lg"
+              ? "text-[var(--color-primary)] border-t-2 border-[var(--color-primary)] translate-y-0 rounded-t-lg"
               : "text-[var(--color-text-subtle)] translate-y-3 hover:translate-y-0 hover:rounded-t-lg"
-            } px-2 py-1`}
+            } px-4 py-1`}
           onClick={() => setActiveTab("nowplaying")}
         >
           🎵
@@ -73,18 +73,16 @@ const HighlightDefault: React.FC<HighlightProps> = ({ highlight }) => {
         <button
           className={`bg-[var(--color-mini-card)] text-sm font-medium rounded-tr-lg transition-transform duration-200
     ${activeTab === "extra"
-              ? "text-[var(--color-primary)] border-t-2 border-[var(--color-primary)] translate-y-1 rounded-tl-lg"
+              ? "text-[var(--color-primary)] border-t-2 border-[var(--color-primary)] translate-y-0 rounded-tl-lg"
               : "text-[var(--color-text-subtle)] translate-y-3 hover:translate-y-0 hover:rounded-t-lg"
-            } px-2 py-1`}
+            } px-4 py-1`}
           onClick={() => setActiveTab("extra")}
         >
           📖
         </button>
       </div>
 
-
-      <div className="relative z-1 bg-[var(--color-mini-card)] px-3 py-2 flex flex-col gap-2 rounded-tl-lg rounded-b-lg shadow-md min-h-[105px] max-h-[105px]">
-
+      <div className="relative z-1 bg-gradient-to-b from-[var(--color-mini-card)] to-[color-mix(in_srgb,var(--color-mini-card)_65%,black)] px-3 py-2 flex flex-col gap-2 shadow-md min-h-[115px] max-h-[105px]">
         {activeTab === "motd" && (
           <div className="flex flex-col gap-1 w-full">
             {(!animeGif || !motd) && (
@@ -104,10 +102,10 @@ const HighlightDefault: React.FC<HighlightProps> = ({ highlight }) => {
                 <img
                   src={animeGif}
                   alt="Anime GIF"
-                  className="w-[60px] h-[60px] rounded-md object-cover flex-shrink-0"
+                  className="w-[70px] h-[70px] rounded-md object-cover flex-shrink-0"
                 />
               )}
-              <div className="flex-1 min-w-0 h-[60px]">
+              <div className="flex-1 min-w-0 h-[70px]">
                 <div className="text-sm text-[var(--color-text-subtle)] h-full overflow-y-auto scrollbar-hide break-words">
                   {motd || highlight.messageOfTheDay}
                 </div>
@@ -126,7 +124,7 @@ const HighlightDefault: React.FC<HighlightProps> = ({ highlight }) => {
                   ? "Now Playing ♫"
                   : "Last Played ♫"}
             </p>
-            <div className="flex items-center gap-3 overflow-hidden">
+            <div className="flex items-center gap-4 overflow-hidden">
               {(!song?.albumImageUrl || !song?.title) && (
                 <div className="absolute inset-0 flex items-center justify-center bg-black/40 rounded-md">
                   <img
@@ -139,7 +137,7 @@ const HighlightDefault: React.FC<HighlightProps> = ({ highlight }) => {
               <img
                 src={song?.albumImageUrl || "https://media.tenor.com/_iQh56E5r5YAAAAi/question-mark-question.gif"}
                 alt={song?.title || "Nothing Playing"}
-                className="w-[60px] h-[60px] rounded-md object-cover flex-shrink-0"
+                className="w-[70px] h-[70px] rounded-md object-cover flex-shrink-0"
               />
               <div className="flex flex-col justify-center w-[calc(100%-55px)] gap-0.5">
                 {song ? (
@@ -186,7 +184,7 @@ const HighlightDefault: React.FC<HighlightProps> = ({ highlight }) => {
               <img
                 src="https://media1.tenor.com/m/yvNOUKbCavQAAAAC/anime-blue-archive.gif"
                 alt="Extra"
-                className="w-[60px] h-[60px] rounded-md object-cover flex-shrink-0"
+                className="w-[70px] h-[70px] rounded-md object-cover flex-shrink-0"
               />
               <p className="text-sm text-[var(--color-text-main)] flex-1">
                 🌟 Some other highlight or info

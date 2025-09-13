@@ -6,11 +6,16 @@
   --color-text-main: #f9fafb;   
   --color-text-subtle: #9ca3af; 
 
+  /* Hover States */
+  --color-card-hover: #273548;        
+  --color-mini-card-hover: #222325;   
+  --color-alt-card-hover: #1e1e1e;    
+
   /* Drag & Drop States */
-  --color-accept: #10b981;    /* green */
-  --color-reject: #ef4444;    /* red */
-  --color-hover: #3b82f6;     /* blue */
-  --color-dragging: #f59e0b;  /* amber */
+  --color-accept: #10b981;    
+  --color-reject: #ef4444;    
+  --color-hover: #3b82f6;     
+  --color-dragging: #f59e0b;  
 }
 
 [data-theme="light"] {
@@ -20,6 +25,11 @@
   --color-alt-card: #e2e8f0;    
   --color-text-main: #1e293b;   
   --color-text-subtle: #64748b; 
+
+  /* Hover States */
+  --color-card-hover: #f8fafc;     
+  --color-mini-card-hover: #f1f5f9; 
+  --color-alt-card-hover: #cbd5e1;  
 
   /* Drag & Drop States */
   --color-accept: #16a34a;
@@ -35,6 +45,11 @@
   --color-alt-card: #ff9900;    
   --color-text-main: #ffcc00;   
   --color-text-subtle: #ffdd88;  
+
+  /* Hover States */
+  --color-card-hover: #2a2a2a;      
+  --color-mini-card-hover: #1a1a1a; 
+  --color-alt-card-hover: #ffb733;  
 
   /* Drag & Drop States */
   --color-accept: #22c55e;
