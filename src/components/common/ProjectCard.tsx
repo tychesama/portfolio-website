@@ -1,5 +1,15 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import type { DraggableAttributes } from "@dnd-kit/core";
+
+type DragListeners = { // for vercel
+  onKeyDown?: (event: React.KeyboardEvent<HTMLDivElement>) => void;
+  onPointerDown?: (event: React.PointerEvent<HTMLDivElement>) => void;
+  onPointerUp?: (event: React.PointerEvent<HTMLDivElement>) => void;
+  onPointerMove?: (event: React.PointerEvent<HTMLDivElement>) => void;
+  onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
+};
+
 
 export interface Project {
   name: string;
@@ -10,13 +20,12 @@ export interface Project {
   color: string;
 }
 
-
 interface ProjectCardProps {
   project: Project;
   className?: string;
   type?: "normal" | "expanded";
-  attributes?: Record<string, unknown>;
-  listeners?: Record<string, unknown>;
+  attributes?: DraggableAttributes;
+  listeners?: DragListeners;
   setNodeRef?: (node: HTMLElement | null) => void;
 }
 
