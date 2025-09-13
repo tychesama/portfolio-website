@@ -77,7 +77,7 @@ const ActivityDefault: React.FC = () => {
         {commits.map((commit, idx) => (
           <div
             key={idx}
-            className="bg-[color-mix(in_srgb,var(--color-mini-card)_65%,black] hover:bg-[--color-mini-card-hover] py-2 px-3 min-h-[auto] flex items-center gap-3 shadow-sm hover:shadow-md transition-shadow duration-150 "
+            className="bg-[--color-mini-card] hover:bg-[--color-mini-card-hover] py-2 px-3 min-h-[auto] flex items-center gap-3 shadow-sm hover:shadow-md transition-shadow duration-150 "
           >
             <img
               src="https://media1.tenor.com/m/yvNOUKbCavQAAAAC/anime-blue-archive.gif"

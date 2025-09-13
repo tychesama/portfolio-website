@@ -3,28 +3,25 @@
 import React from "react";
 import CertificationsCard from "../common/CertificationsCard";
 
+interface Certification {
+  name: string;
+  logo: string;
+  image?: string;
+  issuer?: string;
+  date?: string;
+  details?: string;
+}
 
-const CertificationsSection: React.FC = () => {
+interface CertificationsSectionProps {
+  certifications: Certification[];
+}
+
+const CertificationsSection: React.FC<CertificationsSectionProps> = ({ certifications }) => {
   return (
-    <div className=" flex flex-wrap gap-2">
-      <CertificationsCard
-        certifications={{
-          cert: "CCNA",
-          logo: "/assets/title/title_icon_yui (2).png",
-        }}
-      />
-      <CertificationsCard
-        certifications={{
-          cert: "Something",
-          logo: "/assets/title/title_icon_yui (3).png",
-        }}
-      />
-      <CertificationsCard
-        certifications={{
-          cert: "Sumth",
-          logo: "/assets/title/title_icon_yui (4).png",
-        }}
-      />
+    <div className="flex gap-2 overflow-x-auto scrollbar-hide">
+      {certifications.map((cert, idx) => (
+        <CertificationsCard key={idx} certification={cert} />
+      ))}
     </div>
   );
 };

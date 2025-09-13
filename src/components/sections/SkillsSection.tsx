@@ -3,7 +3,7 @@ import React from "react";
 
 interface Skill {
   name: string;
-  stars: number; 
+  stars: number;
 }
 
 interface Skills {
@@ -18,33 +18,33 @@ interface SkillsCardProps {
 
 const renderStars = (count: number) => {
   return (
-    <div className="flex mt-1">
-      {[1, 2, 3].map((i) => (
-        <span
-          key={i}
-          className={`text-yellow-400 text-xs ${
-            i <= count ? "opacity-100" : "opacity-30"
-          }`}
-        >
-          ★
-        </span>
-      ))}
-    </div>
+    <div className="flex -mt-1.5 gap-x-1.5 w-full flex justify-center">
+  {[1,2,3].map((i) => (
+    <span
+      key={i}
+      className={`text-yellow-500 text-lg drop-shadow-lg ${
+        i <= count ? "opacity-100" : "opacity-30"
+      }`}
+  style={{ WebkitTextStroke: "1px rgba(0,0,0,0.3)" }}
+    >★</span>
+  ))}
+</div>
+
   );
 };
 
 const SkillsCard: React.FC<SkillsCardProps> = ({ skills }) => {
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-6 min-w-[930px]">
       <div>
         <p className="text-sm font-semibold text-blue-400 mb-2">Technical</p>
         <div className="flex flex-wrap gap-2">
           {skills.technical.map((skill, idx) => (
             <div
               key={idx}
-              className="px-3 py-2 text-xs rounded-md bg-blue-500/10 text-blue-400 border border-blue-400/30 flex flex-col items-center"
+              className="px-2 py-2 text-xs w-[140px] h-[35px] rounded-md bg-blue-500/70 text-white border border-blue-400/30 flex flex-col items-start"
             >
-              <span>{skill.name}</span>
+              <span>🟡 {skill.name}</span>
               {renderStars(skill.stars)}
             </div>
           ))}
@@ -57,9 +57,9 @@ const SkillsCard: React.FC<SkillsCardProps> = ({ skills }) => {
           {skills.tools.map((tool, idx) => (
             <div
               key={idx}
-              className="px-3 py-2 text-xs rounded-md bg-green-500/10 text-green-400 border border-green-400/30 flex flex-col items-center"
+              className="px-2 py-2 text-xs w-[140px] h-[35px] rounded-md bg-blue-500/70 text-white border border-blue-400/30 flex flex-col items-start"
             >
-              <span>{tool.name}</span>
+              <span>🟢 {tool.name}</span>
               {renderStars(tool.stars)}
             </div>
           ))}
@@ -72,9 +72,9 @@ const SkillsCard: React.FC<SkillsCardProps> = ({ skills }) => {
           {skills.softSkills.map((soft, idx) => (
             <div
               key={idx}
-              className="px-3 py-2 text-xs rounded-md bg-white/10 text-white border border-white/30 flex flex-col items-center"
+              className="px-2 py-2 text-xs w-[140px] h-[35px] rounded-md bg-blue-500/70 text-white border border-blue-400/30 flex flex-col items-start"
             >
-              <span>{soft.name}</span>
+              <span>🟤 {soft.name}</span>
               {renderStars(soft.stars)}
             </div>
           ))}

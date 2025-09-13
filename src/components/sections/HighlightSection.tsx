@@ -9,13 +9,7 @@ interface Song {
   songUrl: string;
 }
 
-interface HighlightProps {
-  highlight: {
-    messageOfTheDay: string;
-  };
-}
-
-const HighlightDefault: React.FC<HighlightProps> = ({ highlight }) => {
+const HighlightDefault: React.FC = () => {
   const [activeTab, setActiveTab] = useState<"motd" | "nowplaying" | "extra">(
     "motd"
   );
@@ -107,7 +101,7 @@ const HighlightDefault: React.FC<HighlightProps> = ({ highlight }) => {
               )}
               <div className="flex-1 min-w-0 h-[70px]">
                 <div className="text-sm text-[var(--color-text-subtle)] h-full overflow-y-auto scrollbar-hide break-words">
-                  {motd || highlight.messageOfTheDay}
+                  {motd}
                 </div>
               </div>
             </div>

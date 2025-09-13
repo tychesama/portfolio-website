@@ -166,7 +166,7 @@ const ProjectDefault: React.FC<ProjectProps> = ({ projects }) => {
   if (!client) return null;
 
   return (
-    <div className="w-full bg-transparent rounded-lg mt-2 p-4 flex flex-row">
+    <div className="w-full bg-transparent rounded-lg -mt-2 py-3 px-4 flex flex-row">
       <DndContext
         collisionDetection={pointerWithin}
         onDragStart={handleDragStart}
@@ -177,7 +177,7 @@ const ProjectDefault: React.FC<ProjectProps> = ({ projects }) => {
           items={projectList.map((p) => p.name)}
           strategy={verticalListSortingStrategy}
         >
-          <div className="flex flex-col gap-3 h-[490px] w-[245px] overflow-y-auto pr-2 scrollbar-hide border-r" style={{ borderColor: "rgba(81, 86, 94, 0.3)" }}>
+          <div className="flex flex-col gap-3 h-[500px] w-[245px] overflow-y-auto pr-2 scrollbar-hide border-r" style={{ borderColor: "rgba(81, 86, 94, 0.3)" }}>
             {projectList.map((project) => (
               <SortableProject key={project.name} project={project} />
             ))}

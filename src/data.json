@@ -6,22 +6,6 @@
     "image": "https://picsum.photos/500",
     "about": "Passionate developer with a focus on functionality and efficiency of methods and functions."
   },
-  "highlight": {
-    "messageOfTheDay": "Keep learning, keep building!",
-    "currentPlaylistSong": {
-      "title": "Song Name",
-      "artist": "Artist Name",
-      "link": "https://open.spotify.com/track/example"
-    }
-  },
-  "activity": {
-    "lastUpdatedRepo": {
-      "name": "cool-project",
-      "description": "Latest repo update showcasing my learning.",
-      "link": "https://github.com/johndoe/cool-project",
-      "lastUpdated": "2025-08-20"
-    }
-  },
   "projects": [
     {
       "name": "Portfolio Website",
@@ -165,15 +149,63 @@
   "skills": {
     "technical": [
       {
+        "name": "Java",
+        "stars": 4
+      },
+      {
+        "name": "C++",
+        "stars": 3
+      },
+      {
+        "name": "Python",
+        "stars": 2
+      },
+      {
+        "name": "Django",
+        "stars": 3
+      },
+      {
+        "name": "MySQL",
+        "stars": 3
+      },
+      {
         "name": "React",
         "stars": 3
+      },
+      {
+        "name": "Next.js",
+        "stars": 3
+      },
+      {
+        "name": "Flutter",
+        "stars": 2
+      },
+      {
+        "name": "JavaScript",
+        "stars": 2
       },
       {
         "name": "TypeScript",
         "stars": 2
       },
       {
-        "name": "Next.js",
+        "name": "PHP",
+        "stars": 2
+      },
+      {
+        "name": "HTML/CSS",
+        "stars": 3
+      },
+      {
+        "name": "CCNA",
+        "stars": 2
+      },
+      {
+        "name": "Odoo",
+        "stars": 2
+      },
+      {
+        "name": "bubble.io",
         "stars": 3
       }
     ],
@@ -185,62 +217,174 @@
       {
         "name": "Figma",
         "stars": 2
+      },
+      {
+        "name": "Canva",
+        "stars": 2
+      },
+      {
+        "name": "MS Teams",
+        "stars": 3
+      },
+      {
+        "name": "Azure DevOps",
+        "stars": 2
+      },
+      {
+        "name": "Agile Framework",
+        "stars": 2
+      },
+      {
+        "name": "Adobe Photoshop",
+        "stars": 2
+      },
+      {
+        "name": "Adobe Premiere",
+        "stars": 2
       }
     ],
     "softSkills": [
       {
         "name": "Teamwork",
-        "stars": 3
+        "stars": 4
       },
       {
         "name": "Communication",
-        "stars": 2
+        "stars": 3
       },
       {
         "name": "Problem-Solving",
-        "stars": 1
+        "stars": 3
+      },
+      {
+        "name": "Adaptability",
+        "stars": 3
+      },
+      {
+        "name": "Organization",
+        "stars": 3
+      },
+      {
+        "name": "Fast Learning",
+        "stars": 4
+      },
+      {
+        "name": "Work Ethic",
+        "stars": 4
       }
     ]
   },
   "experience": [
     {
-      "company": "Tech Corp",
-      "role": "Software Engineer",
-      "duration": "2023 - Present",
-      "description": "Worked on scalable web applications and APIs."
+      "company": "Jairosoft",
+      "logo": "/assets/jairo.png",
+      "role": "Bubble.io Developer",
+      "duration": "200 hours",
+      "date": "2024-04-21",
+      "link": "https://example.com",
+      "images": [],
+      "description": "Built and optimized user-facing features."
     },
     {
-      "company": "Web Solutions",
-      "role": "Frontend Developer",
-      "duration": "2021 - 2023",
+      "company": "Give",
+      "logo": "https://picsum.photos/500",
+      "role": "Bubble.io Developer",
+      "duration": "200 hours",
+      "date": "2024-04-21",
+      "link": "https://example.com",
+      "images": [],
+      "description": "Built and optimized user-facing features."
+    },
+    {
+      "company": "Job",
+      "logo": "https://picsum.photos/500",
+      "role": "Bubble.io Developer",
+      "duration": "200 hours",
+      "date": "2024-04-21",
+      "link": "https://example.com",
+      "images": [],
+      "description": "Built and optimized user-facing features."
+    },
+    {
+      "company": "Job",
+      "logo": "https://picsum.photos/500",
+      "role": "Bubble.io Developer",
+      "duration": "200 hours",
+      "date": "2024-04-21",
+      "link": "https://example.com",
+      "images": [],
+      "description": "Built and optimized user-facing features."
+    },
+    {
+      "company": "Job",
+      "logo": "https://picsum.photos/500",
+      "role": "Bubble.io Developer",
+      "duration": "200 hours",
+      "date": "2024-04-21",
+      "link": "https://example.com",
+      "images": [],
+      "description": "Built and optimized user-facing features."
+    },
+    {
+      "company": "Job",
+      "logo": "https://picsum.photos/500",
+      "role": "Bubble.io Developer",
+      "duration": "200 hours",
+      "date": "2024-04-21",
+      "link": "https://example.com",
+      "images": [],
       "description": "Built and optimized user-facing features."
     }
   ],
   "certifications": [
     {
       "name": "CCNA",
+      "logo": "/assets/ccna.jpg",
+      "image": "https://picsum.photos/500",
       "issuer": "Cisco",
       "date": "2024-03-10"
     },
     {
-      "name": "AWS Certified Cloud Practitioner",
-      "issuer": "Amazon Web Services",
-      "date": "2023-08-15"
-    }
-  ],
-  "extra": {
-    "notes": "This section can be customized for future ideas."
-  },
-  "funFacts": [
-    "I can solve a Rubik’s cube in under 1 minute.",
-    "Coffee is my coding fuel.",
-    "I once built a drone from scratch."
-  ],
-  "education": [
+      "name": "Somthin",
+      "logo": "/assets/addu.png",
+      "image": "https://picsum.photos/500",
+      "issuer": "Cisco",
+      "date": "2024-03-10"
+    },
     {
-      "institution": "University of Technology",
-      "degree": "B.Sc. in Computer Science",
-      "years": "2018 - 2022"
+      "name": "AHHHHHHHHHHHH",
+      "logo": "/assets/titlegif.gif",
+      "image": "https://picsum.photos/500",
+      "issuer": "Cisco",
+      "date": "2024-03-10"
+    },
+    {
+      "name": "Somthin",
+      "logo": "/assets/addu.png",
+      "image": "https://picsum.photos/500",
+      "issuer": "Cisco",
+      "date": "2024-03-10"
+    },
+    {
+      "name": "AHHHHHHHHHHHH",
+      "logo": "/assets/titlegif.gif",
+      "image": "https://picsum.photos/500",
+      "issuer": "Cisco",
+      "date": "2024-03-10"
+    },
+    {
+      "name": "Somthin",
+      "logo": "/assets/addu.png",
+      "image": "https://picsum.photos/500",
+      "issuer": "Cisco",
+      "date": "2024-03-10"
+    },
+    {
+      "name": "AHHHHHHHHHHHH",
+      "logo": "/assets/titlegif.gif",
+      "image": "https://picsum.photos/500",
+      "issuer": "Cisco",
+      "date": "2024-03-10"
     }
   ]
 }
