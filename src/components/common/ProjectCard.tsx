@@ -55,7 +55,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, className, type = "n
         className={`${baseStyles} flex-1 ${className || ""}`}
         style={{ borderLeftColor: project.color }}
       >
-        <div className="bg-[var(--color-card-bg)] p-3 rounded-lg flex flex-col">
+        <div className="bg-[var(--color-card-bg)] h-[100px] p-3 rounded-lg flex flex-col">
           <p className="text-sm font-medium text-[var(--color-primary)]">{project.name}</p>
           <p className="text-xs text-[var(--color-text-subtle)] mt-1 line-clamp-2">{project.description}</p>
           <p className="text-[10px] text-[var(--color-text-subtle)] mt-1 italic">{project.techstack.join(", ")}</p>
@@ -74,31 +74,39 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, className, type = "n
         className={`bg-[var(--color-card-bg)] p-4 rounded-lg flex flex-col gap-3 h-full transition-opacity duration-500 ${showContent ? "opacity-100" : "opacity-0"
           }`}
       >
-        <div className="flex justify-between items-center">
-          <h2 className="text-lg font-bold text-[var(--color-primary)]">{project.name}</h2>
+        <div className="flex justify-between items-center w-full">
+          <div className="flex-1 text-left">
+            <h2 className="text-lg font-bold text-[var(--color-primary)]">{project.name}</h2>
+          </div>
 
-          {/* Drag Handle */}
           <div
             {...attributes}
             {...listeners}
-            className="cursor-grab active:cursor-grabbing px-2 py-1 rounded text-[var(--color-text-subtle)]"
+            className="flex-1 flex justify-center cursor-grab active:cursor-grabbing px-2 py-1 rounded text-[var(--color-text-subtle)]"
           >
-            ⠿⠿⠿⠿⠿⠿⠿⠿
+            ⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿
           </div>
-          <div>Random</div>
+          <div className="flex-1 text-right">Last Updated</div>
         </div>
 
         <div className="w-full h-full flex">
-          {/* left */}
-          <div className="flex flex-col h-full justify-between flex-2 pr-4 border-r" style={{ borderColor: "rgba(81, 86, 94, 0.3)" }}>
-            <p className="text-sm text-[var(--color-text-subtle)]">{project.description}</p>
+          <div className="flex flex-1 flex-col h-full justify-between pr-4 border-r" style={{ borderColor: "rgba(81, 86, 94, 0.3)" }}>
+            <div>
+              <p>Github Link  on name clickable</p>
+              Collaborators
+              Languages
+              Deployment Status
+              Commits
+            </div>
+            <div className="flex h-[200px] overflow-y-auto scrollbar-hide">
+              <p className="text-sm text-[var(--color-text-subtle)] h-[90%] overflow-y-auto scrollbar-hide">{project.description}</p>
+            </div>
             <p className="text-xs text-[var(--color-text-subtle)] italic">
               Tech Stack: {project.techstack.join(", ")}
             </p>
           </div>
 
-          {/* right */}
-          <div className="pl-7 bg-[var(--color-mini-card)] rounded-md w-[600px] h-full flex items-center justify-center">
+          <div className="flex pl-7 bg-[var(--color-mini-card)] rounded-md w-[600px] h-full items-center justify-center">
             <img
               src="https://media.istockphoto.com/id/517188688/photo/mountain-landscape.jpg?s=2048x2048&w=is&k=20&c=Xa_wH_pZFMWNX8EPtufv9KSvS1OzUPus7C0Br2ZIMDg="
               alt="Yui"

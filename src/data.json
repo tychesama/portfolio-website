@@ -9,7 +9,7 @@
   "projects": [
     {
       "name": "Portfolio Website",
-      "description": "Personal website to showcase work.",
+      "description": "Lorem is most commonly encountered as part of Lore is most commonly encountered as part of Lore is most commonly encountered as part of Lore is most commonly encountered as part of Lorem ipsum, a placeholder text (or dummy text) used in graphic design, publishing, and web development to simulate the look of real content before the final text is available. It's a jumble of Latin words, derived from a classical Latin text, that serves to demonstrate a design's typography, layout, and visual elements without distracting from the design itself.  Lorem is most commonly encountered as part of Lorem ipsum, a placeholder text (or dummy text) used in graphic design, publishing, and web development to simulate the look of real content before the final text is available. It's a jumble of Latin words, derived from a classical Latin text, that serves to demonstrate a design's typography, layout, and visual elements without distracting from the design itself.  ",
       "techstack": [
         "React",
         "TailwindCSS"
