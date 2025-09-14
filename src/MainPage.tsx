@@ -52,7 +52,7 @@ const MainPage: React.FC = () => {
       </main>
 
       {/* Footer */}
-      <footer className="bg-[var(--color-card)] text-center py-4 border-t mt-12 transition-colors">
+      <footer className="bg-[var(--color-card)] text-center py-4 mt-12 transition-colors">
         <p className="text-sm text-[var(--color-text-subtle)]">© {new Date().getFullYear()} Joem. All rights reserved.</p>
       </footer>
     </div>
