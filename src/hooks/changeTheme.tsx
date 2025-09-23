@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from "react";
 
-type Theme = "light" | "dark" | "alternate"; 
+type Theme = "professional" | "alternate" | "interactive" | "special1" | "special2" | "special3";
 
 export const useTheme = () => {
-  const [theme, setTheme] = useState<Theme>("dark");
+  const [theme, setTheme] = useState<Theme>("professional");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {

@@ -26,7 +26,7 @@ const MainPage: React.FC = () => {
   ];
 
   return (
-    <div className="bg-[var(--color-surface)] text-[var(--color-text-main)] min-h-screen transition-colors">
+    <div className="page-surface [background:var(--page-bg)] text-[var(--color-text-main)] min-h-screen transition-colors">
       <header className="bg-[var(--color-card)] shadow sticky top-0 z-30">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
           <h1 className="text-xl font-bold text-primary">Tyche01</h1>
@@ -43,7 +43,7 @@ const MainPage: React.FC = () => {
           <section
             key={id}
             id={id}
-            className={`bg-[var(--color-card)] rounded shadow p-4 transition transform hover:scale-[1.01] hover:z-10 ${className}`}
+            className={`card [background:var(--card-bg)] rounded shadow p-4 transition transform hover:scale-[1.01] z-10 hover:z-10 ${className}`}
           >
             <h2 className="text-lg font-bold text-secondary mb-2">{title}</h2>
             <span className="text-sm text-[var(--color-text-subtle)]">{content}</span>
@@ -51,7 +51,6 @@ const MainPage: React.FC = () => {
         ))}
       </main>
 
-      {/* Footer */}
       <footer className="bg-[var(--color-card)] text-center py-4 mt-12 transition-colors">
         <p className="text-sm text-[var(--color-text-subtle)]">© {new Date().getFullYear()} Joem. All rights reserved.</p>
       </footer>

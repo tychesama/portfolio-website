@@ -10,7 +10,7 @@ interface ProfileProps {
 
 const ProfileDefault: React.FC<ProfileProps> = ({ profile }) => (
   <div className="w-full h-[250px] flex flex-col justify-between items-center text-[var(--color-text-main)]">
-    <div className="bg-[var(--color-card)] px-8 pt-6 rounded-lg flex items-start w-full ml-8 ">
+    <div className="px-8 pt-6 rounded-lg flex items-start w-full ml-8 ">
       <div className="min-w-[275px] h-[320px] overflow-hidden">
         <img
           src="/assets/pfp.png"
