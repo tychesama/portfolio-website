@@ -292,7 +292,7 @@ const SkillsSection: React.FC<SkillsSectionProps> = ({ skills }) => {
             {(() => {
               const c = 2 * Math.PI * 15.915; // circumference ~ 100
               let offset = 0;
-              return pieData.map((slice, i) => {
+              return pieData.map((slice) => {
                 const len = slice.pct * c;
                 const dasharray = `${len} ${c - len}`;
                 const circle = (
