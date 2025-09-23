@@ -18,16 +18,26 @@ interface RepoData {
 
 const ActivityDefault: React.FC = () => {
   const [commits, setCommits] = useState<Commit[]>([]);
+  const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
+  const [username, setUsername] = useState<string | null>(null);
 
   useEffect(() => {
     async function loadCommits() {
       const res = await fetch("/api/github", { cache: "no-store" });
       const data = await res.json();
 
+      // store avatar + username
+      setAvatarUrl(data.avatarUrl);
+      setUsername(data.username);
+
       const flatCommits: Commit[] = [];
       data.commitsData?.forEach((repo: RepoData) => {
         repo.commits.forEach((c: Commit) => {
-          flatCommits.push({ ...c, repoName: repo.repoName, repoLink: repo.repoLink });
+          flatCommits.push({
+            ...c,
+            repoName: repo.repoName,
+            repoLink: repo.repoLink,
+          });
         });
       });
 
@@ -75,43 +85,40 @@ const ActivityDefault: React.FC = () => {
           </p>
         </div>
         {commits.map((commit, idx) => (
-          <div
+          <a
             key={idx}
-            className="bg-[--color-mini-card] hover:bg-[--color-mini-card-hover] py-2 px-3 min-h-[auto] flex items-center gap-3 shadow-sm hover:shadow-md transition-shadow duration-150 "
+            href={commit.repoLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block bg-[--color-mini-card] hover:bg-[--color-mini-card-hover] py-2 px-3 min-h-[auto] flex items-center gap-3 shadow-sm hover:shadow-md transition-shadow duration-150"
           >
             <img
-              src="https://media1.tenor.com/m/yvNOUKbCavQAAAAC/anime-blue-archive.gif"
-              alt="Extra"
-              className="w-[35px] h-[35px] rounded-sm object-cover flex-shrink-0"
+              src={avatarUrl || "https://placehold.co/35x35"}
+              alt={username || "GitHub User"}
+              className="w-[45px] h-[45px] rounded-md object-cover flex-shrink-0"
             />
             <div className="flex flex-col gap-0 min-w-0">
-              <a
-                href={commit.repoLink}
-                target="_blank"
-                rel="noopener noreferrer"
+              <div
                 className="text-sm font-semibold text-[var(--color-text-main)] hover:text-[var(--color-text-subtle)] hover:underline truncate"
               >
                 {commit.repoName}
-              </a>
+              </div>
 
-              <a
-                href={commit.link}
-                target="_blank"
-                rel="noopener noreferrer"
+              <div
                 className="block w-full text-xs text-[var(--color-text-subtle)] hover:text-[var(--color-text-main)] hover:underline truncate"
               >
                 {commit.message}
-              </a>
+              </div>
 
               <span className="text-[0.7rem] text-[var(--color-text-subtle)]">
                 {timeAgo(commit.date)}
               </span>
             </div>
-          </div>
+          </a>
         ))}
       </div>
     </div>
   );
-}
+};
 
 export default ActivityDefault;

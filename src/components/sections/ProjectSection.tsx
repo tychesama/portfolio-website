@@ -11,10 +11,11 @@ import ProjectCard from "../common/ProjectCard";
 interface Project {
   name: string;
   description: string;
-  techstack: string[];
   link: string;
   images?: string[];
   color: string;
+  repo: string;
+  user: string;
 }
 
 interface ProjectProps {

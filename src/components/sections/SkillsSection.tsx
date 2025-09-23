@@ -96,7 +96,7 @@ const SkillsSection: React.FC<SkillsSectionProps> = ({ skills }) => {
 
       {/* DEFAULT: Vertical scrollable list with colored bars */}
       {styleMode === "Default" && (
-        <div className="w-full overflow-y-auto pr-1">
+        <div className="w-full overflow-y-auto scrollbar-hide pr-1">
           <ul className="space-y-2">
             {flatSkills.map((s, i) => {
               const pct = Math.max(0, Math.min(100, Math.round((s.stars / 3) * 100)));

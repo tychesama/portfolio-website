@@ -8,142 +8,114 @@
   },
   "projects": [
     {
+      "name": "Motobai Inventory and Sales Management System",
+      "description": "An inventory and sales management platform built with React and Django.",
+      "link": "https://github.com/joemtyche/MotobaiProject",
+      "repo": "MotobaiProject",
+      "color": "#3B82F6",
+      "images": [
+        "https://picsum.photos/600?t=123123123"
+      ],
+      "user": "joemtyche"
+    },
+    {
+      "name": "Highlights App",
+      "description": "A mobile app built in Flutter for capturing and sharing highlights.",
+      "link": "https://github.com/tychesama/highlights-app",
+      "repo": "highlights-app",
+      "color": "#10B981",
+      "images": [
+        "https://picsum.photos/601"
+      ],
+      "user": "tychesama"
+    },
+    {
+      "name": "Infinite Tower Adventure Game",
+      "description": "A Java-based adventure game with infinite tower mechanics.",
+      "link": "https://github.com/joemtyche/AdventureGame",
+      "repo": "AdventureGame",
+      "color": "#F59E0B",
+      "images": [
+        "https://picsum.photos/600?t=31231235"
+      ],
+      "user": "joemtyche"
+    },
+    {
+      "name": "Employee Management System",
+      "description": "A Node.js and JavaScript web app to manage employee records.",
+      "link": "https://github.com/joemtyche/EventDrivenCRUD",
+      "repo": "EventDrivenCRUD",
+      "color": "#EF4444",
+      "images": [
+        "https://picsum.photos/600?t=2315675672312"
+      ],
+      "user": "joemtyche"
+    },
+    {
+      "name": "Tetris Lite",
+      "description": "A lightweight C++ implementation of Tetris using Raylib CPP.",
+      "link": "https://github.com/joemtyche/TetrisLite",
+      "repo": "TetrisLite",
+      "color": "#6366F1",
+      "images": [
+        "https://picsum.photos/600?t=657567"
+      ],
+      "user": "joemtyche"
+    },
+    {
+      "name": "Simple Todo List",
+      "description": "A React-based simple todo list app.",
+      "link": "https://github.com/user2/simple-todo-list",
+      "repo": "",
+      "color": "#14B8A6",
+      "images": [
+        "https://picsum.photos/600?t=4365345"
+      ],
+      "user": "joemtyche"
+    },
+    {
+      "name": "Simple Sales System",
+      "description": "A sales management system built with React and Django.",
+      "link": "https://github.com/shaheenNawaf/CPIS_AdDU",
+      "repo": "CPIS_AdDU",
+      "color": "#8B5CF6",
+      "images": [
+        "https://picsum.photos/600?t=231232313312"
+      ],
+      "user": "joemtyche"
+    },
+    {
+      "name": "Japan Attractions Appreciation",
+      "description": "A static HTML project showcasing Japanese attractions.",
+      "link": "https://github.com/joemtyche/PerformanceAssessment1",
+      "repo": "PerformanceAssessment1",
+      "color": "#DC2626",
+      "images": [
+        "https://picsum.photos/600?t=44234"
+      ],
+      "user": "joemtyche"
+    },
+    {
       "name": "Portfolio Website",
-      "description": "Lorem is most commonly encountered as part of Lore is most commonly encountered as part of Lore is most commonly encountered as part of Lore is most commonly encountered as part of Lorem ipsum, a placeholder text (or dummy text) used in graphic design, publishing, and web development to simulate the look of real content before the final text is available. It's a jumble of Latin words, derived from a classical Latin text, that serves to demonstrate a design's typography, layout, and visual elements without distracting from the design itself.  Lorem is most commonly encountered as part of Lorem ipsum, a placeholder text (or dummy text) used in graphic design, publishing, and web development to simulate the look of real content before the final text is available. It's a jumble of Latin words, derived from a classical Latin text, that serves to demonstrate a design's typography, layout, and visual elements without distracting from the design itself.  ",
-      "techstack": [
-        "React",
-        "TailwindCSS"
-      ],
-      "link": "https://example.com",
+      "description": "Personal portfolio web application.",
+      "link": "https://github.com/tychesama/portfolio-website",
+      "repo": "portfolio-website",
+      "color": "#D97706",
       "images": [
-        "https://picsum.photos/500"
+        "https://picsum.photos/600?t=2312312"
       ],
-      "color": "#3B82F6"
+      "user": "tychesama"
     },
     {
-      "name": "Task Manager App",
-      "description": "Full-featured to-do application with Firebase backend.",
-      "techstack": [
-        "React",
-        "Firebase",
-        "Node.js"
-      ],
-      "link": "https://github.com/johndoe/task-manager",
+      "name": "Uma Musume AutoTrainer",
+      "description": "A forked project for automating Uma Musume training.",
+      "link": "https://github.com/tychesama/umamusume-auto-train_ty",
+      "repo": "umamusume-auto-train_ty",
+      "color": "#0EA5E9",
       "images": [
-        "https://picsum.photos/500"
+        "https://picsum.photos/600?t=1695481234"
       ],
-      "color": "#10B981"
-    },
-    {
-      "name": "Weather Dashboard",
-      "description": "Real-time weather updates using OpenWeather API.",
-      "techstack": [
-        "Vue.js",
-        "TailwindCSS",
-        "API Integration"
-      ],
-      "link": "https://github.com/johndoe/weather-dashboard",
-      "images": [
-        "https://picsum.photos/501"
-      ],
-      "color": "#F59E0B"
-    },
-    {
-      "name": "E-Commerce Store",
-      "description": "Mock online shop with cart, payments, and authentication.",
-      "techstack": [
-        "Next.js",
-        "Stripe",
-        "MongoDB"
-      ],
-      "link": "https://github.com/johndoe/ecommerce-store",
-      "images": [
-        "https://picsum.photos/502"
-      ],
-      "color": "#EF4444"
-    },
-    {
-      "name": "Blog CMS",
-      "description": "Custom blogging platform with Markdown support.",
-      "techstack": [
-        "Django",
-        "React",
-        "SQLite"
-      ],
-      "link": "https://github.com/johndoe/blog-cms",
-      "images": [
-        "https://picsum.photos/503"
-      ],
-      "color": "#6366F1"
-    },
-    {
-      "name": "Chat Application",
-      "description": "Realtime chat app with WebSockets.",
-      "techstack": [
-        "Node.js",
-        "Express",
-        "Socket.io"
-      ],
-      "link": "https://github.com/johndoe/chat-app",
-      "images": [
-        "https://picsum.photos/504"
-      ],
-      "color": "#14B8A6"
-    },
-    {
-      "name": "Finance Tracker",
-      "description": "Track expenses and income with visual analytics.",
-      "techstack": [
-        "Flutter",
-        "Firebase"
-      ],
-      "link": "https://github.com/johndoe/finance-tracker",
-      "images": [
-        "https://picsum.photos/505"
-      ],
-      "color": "#8B5CF6"
-    },
-    {
-      "name": "AI Image Classifier",
-      "description": "Deep learning project for image recognition.",
-      "techstack": [
-        "Python",
-        "TensorFlow",
-        "Keras"
-      ],
-      "link": "https://github.com/johndoe/ai-image-classifier",
-      "images": [
-        "https://picsum.photos/506"
-      ],
-      "color": "#DC2626"
-    },
-    {
-      "name": "Music Player",
-      "description": "A lightweight browser-based music player.",
-      "techstack": [
-        "React",
-        "Redux",
-        "HTML5 Audio"
-      ],
-      "link": "https://github.com/johndoe/music-player",
-      "images": [
-        "https://picsum.photos/507"
-      ],
-      "color": "#D97706"
-    },
-    {
-      "name": "Travel Planner",
-      "description": "Plan trips with maps, notes, and itineraries.",
-      "techstack": [
-        "Angular",
-        "Firebase",
-        "Leaflet.js"
-      ],
-      "link": "https://github.com/johndoe/travel-planner",
-      "images": [
-        "https://picsum.photos/508"
-      ],
-      "color": "#0EA5E9"
+      "user": "tychesama"
     }
   ],
   "skills": {

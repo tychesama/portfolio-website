@@ -14,10 +14,11 @@ type DragListeners = { // for vercel
 export interface Project {
   name: string;
   description: string;
-  techstack: string[];
   link: string;
   images?: string[];
   color: string;
+  user: string;
+  repo: string;
 }
 
 interface ProjectCardProps {
@@ -33,6 +34,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, className, type = "n
   listeners,
   setNodeRef, }) => {
   const [showContent, setShowContent] = useState(false);
+  const [githubData, setGithubData] = useState<null | any>(null);
+
 
   const baseStyles = `bg-[var(--color-mini-card)] p-2 flex flex-col gap-2 rounded-lg shadow-lg border-l-4`;
 
@@ -40,11 +43,27 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, className, type = "n
     if (type === "expanded") {
       setShowContent(false);
       const timeout = setTimeout(() => setShowContent(true), 300);
+
+      // fetch live github data
+      const fetchGithub = async () => {
+        try {
+          const url = `/api/github/${project.user}/${project.repo}`;
+          const res = await fetch(url);
+          const data = await res.json();
+          console.log("GitHub data:", data);
+          setGithubData(data);
+        } catch (e) {
+          console.error("GitHub fetch failed", e);
+        }
+      };
+
+      fetchGithub();
       return () => clearTimeout(timeout);
     } else {
       setShowContent(true);
     }
-  }, [type]);
+  }, [type, project.user, project.name]);
+
 
   if (type === "normal") {
     return (
@@ -55,10 +74,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, className, type = "n
         className={`${baseStyles} flex-1 ${className || ""}`}
         style={{ borderLeftColor: project.color }}
       >
-        <div className="bg-[var(--color-card-bg)] h-[100px] p-3 rounded-lg flex flex-col">
-          <p className="text-sm font-medium text-[var(--color-primary)]">{project.name}</p>
+        <div className="bg-[var(--color-card-bg)] h-[105px] p-3 rounded-lg flex flex-col">
+          <p className="text-sm font-medium text-[var(--color-primary)] truncate">{project.name}</p>
           <p className="text-xs text-[var(--color-text-subtle)] mt-1 line-clamp-2">{project.description}</p>
-          <p className="text-[10px] text-[var(--color-text-subtle)] mt-1 italic">{project.techstack.join(", ")}</p>
+          <p className="text-[10px] text-[var(--color-text-subtle)] mt-1 italic">React, Django</p>
+          {/* <p className="text-[10px] text-[var(--color-text-subtle)] mt-1 italic">{project.techstack.join(", ")}</p> */}
         </div>
       </div>
     );
@@ -91,18 +111,101 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, className, type = "n
 
         <div className="w-full h-full flex">
           <div className="flex flex-1 flex-col h-full justify-between pr-4 border-r" style={{ borderColor: "rgba(81, 86, 94, 0.3)" }}>
-            <div>
-              <p>Github Link  on name clickable</p>
-              Collaborators
-              Languages
-              Deployment Status
-              Commits
+            <div className="flex flex-col gap-2 text-sm text-[var(--color-text-subtle)]">
+              {/* GitHub link */}
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[var(--color-primary)] font-medium hover:underline"
+              >
+                {project.name}
+              </a>
+              <div className="relative min-h-[200px]">
+                {!githubData && (
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/40 rounded-md z-10">
+                    <img
+                      src="https://media.tenor.com/WX_LDjYUrMsAAAAi/loading.gif"
+                      alt="Loading..."
+                      className="w-8 h-8"
+                    />
+                  </div>
+                )}
+
+                {githubData && (
+                  <div className="flex flex-col gap-2 text-sm text-[var(--color-text-subtle)]">
+                    {/* Collaborators */}
+                    {githubData.collaborators?.length > 0 && (
+                      <div>
+                        <span className="font-semibold">Collaborators:</span>{" "}
+                        {githubData.collaborators.map((c: any) => (
+                          <a
+                            key={c.login}
+                            href={c.html_url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:underline"
+                          >
+                            <img
+                              src={c.avatar_url}
+                              alt={c.login}
+                              className="inline-block w-5 h-5 rounded-full mr-1"
+                            />
+                          </a>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* Languages */}
+                    {githubData.languages && (
+                      <div>
+                        <span className="font-semibold">Languages:</span>{" "}
+                        {Object.keys(githubData.languages).join(", ")}
+                      </div>
+                    )}
+
+                    {/* Last Updated */}
+                    {githubData.repo?.updatedAt && (
+                      <div>
+                        <span className="font-semibold">Last Updated:</span>{" "}
+                        {new Date(githubData.repo.updatedAt).toLocaleDateString()}
+                      </div>
+                    )}
+
+                    {/* Commits */}
+                    {githubData.commits?.length > 0 && (
+                      <div className="flex h-[200px] overflow-y-auto scrollbar-hide">
+                        <span className="font-semibold">Recent Commits:</span>
+                        <ul className="list-disc ml-5">
+                          {githubData.commits.map((c: any, i: number) => (
+                            <li key={i}>
+                              <a
+                                href={c.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="hover:underline"
+                              >
+                                {c.message}
+                              </a>{" "}
+                              <span className="italic text-xs">
+                                ({c.author}, {new Date(c.date).toLocaleDateString()})
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+
             </div>
-            <div className="flex h-[200px] overflow-y-auto scrollbar-hide">
+
+            <div className="flex overflow-y-auto scrollbar-hide">
               <p className="text-sm text-[var(--color-text-subtle)] h-[90%] overflow-y-auto scrollbar-hide">{project.description}</p>
             </div>
             <p className="text-xs text-[var(--color-text-subtle)] italic">
-              Tech Stack: {project.techstack.join(", ")}
+              Tech Stack: React, Django
             </p>
           </div>
 
