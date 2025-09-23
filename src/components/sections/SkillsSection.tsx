@@ -61,16 +61,6 @@ const SkillsSection: React.FC<SkillsSectionProps> = ({ skills }) => {
     skills.softSkills.length
   );
 
-  // Technical only for Bar view
-  const techBars = useMemo(() => {
-    const maxStar = Math.max(1, ...skills.technical.map((t) => t.stars));
-    return skills.technical.map((t) => ({
-      name: t.name,
-      pct: Math.round((t.stars / 3) * 100),
-      norm: Math.max(6, Math.round((t.stars / maxStar) * 100)), // normalized for visible bar
-    }));
-  }, [skills.technical]);
-
   // Pie data (by count share)
   const pieData = useMemo(() => {
     const counts = {
